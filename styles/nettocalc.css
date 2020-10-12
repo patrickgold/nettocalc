@@ -1,0 +1,77 @@
+html, body { height: 100%; }
+
+body {
+    background-color: #000b1c;
+    color: #e5e5e5;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+#body {
+    display: grid;
+    gap: 16px;
+    grid-template-areas:
+        "header header"
+        "input output"
+        "footer footer";
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+#header {
+    grid-area: header;
+    text-align: center;
+}
+
+.column > h2 {
+    display: block;
+    margin: 0 0 16px 0;
+    text-align: center;
+    width: 100%;
+}
+#input {
+    grid-area: input;
+}
+#output {
+    grid-area: output;
+}
+
+.box {
+    background-color: #002e75;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #333;
+    box-sizing: border-box;
+    padding: 8px;
+}
+.box + .box {
+    margin-top: 16px;
+}
+.box > h3 {
+    margin: 4px 4px 16px 4px;
+}
+.box > .row {
+    display: block;
+    margin: 8px 0;
+    width: 100%;
+}
+.box > .row > .checkbox_placeholder {
+    margin: 0 4px;
+    visibility: hidden;
+}
+.box > .row > input[type="number"] {
+    margin: 0 0 0 auto;
+    width: 40%;
+}
+.box input {
+    background-color: #000b1c;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #e5e5e5;
+    padding: 8px;
+}
+
+#footer {
+    grid-area: footer;
+}

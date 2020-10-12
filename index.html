@@ -13,7 +13,93 @@
 
 <body>
     <div id="body">
-        <!-- Content -->
+        <header id="header">
+            <h1>nettocalc</h1>
+        </header>
+        <div class="column" id="input">
+            <h2>Input</h2>
+            <div class="box">
+                <h3>Brutto wage</h3>
+                <span class="row">
+                    <input type="radio" name="i__brutto_type" id="i__brutto_type_hourly">
+                    <label for="i__brutto_type_hourly">Hourly</label>
+                </span>
+                <span class="row">
+                    <input type="checkbox" class="checkbox_placeholder">
+                    <label>Hourly rate:</label>
+                    <input type="number" id="i__hourly_rate">
+                </span>
+                <span class="row">
+                    <input type="checkbox" class="checkbox_placeholder">
+                    <label>Hours worked:</label>
+                    <input type="number" id="i__hours">
+                </span>
+                <span class="row">
+                    <input type="checkbox" class="checkbox_placeholder">
+                    <label>Overtime hours:</label>
+                    <input type="number" id="i__overtime_hours">
+                </span>
+                <span class="row">
+                    <input type="radio" name="i__brutto_type" id="i__brutto_type_given">
+                    <label for="i__brutto_type_given">Given</label>
+                </span>
+                <span class="row">
+                    <input type="checkbox" class="checkbox_placeholder">
+                    <label>Hourly rate:</label>
+                    <input type="number" id="i__brutto">
+                </span>
+            </div>
+            <div class="box">
+                <h3>Base services</h3>
+                <input type="checkbox" id="i__has_union">
+                <input type="number" id="i__union_rate" placeholder="(1% of brutto)">
+                <input type="checkbox" id="i__has_ecard">
+                <input type="number" id="i__ecard" placeholder="(12.30)">
+                <input type="checkbox" id="i__has_allowance">
+                <input type="number" id="i__allowance" placeholder="(0.00)">
+                <input type="checkbox" id="i__has_commuter">
+                <input type="radio" name="i__commuter" id="i__has_commutersmall">
+                <input type="radio" name="i__commuter" id="i__has_commuterlarge">
+                <input type="number" id="i_commuterkm" placeholder="(0)">
+                <input type="range" min="0" max="6" step="1" id="i_children">
+            </div>
+            <div class="box">
+                <h3>Additional benefits</h3>
+                <input type="checkbox" id="i__has_vacation_pay">
+                <input type="number" id="i__vacationpay" placeholder="(brutto)">
+                <input type="checkbox" id="i__has_christmas_bonus">
+                <input type="number" id="i__christmas_bonus" placeholder="(brutto)">
+            </div>
+        </div>
+        <div class="column" id="output">
+            <h2>Output</h2>
+            <div class="box">
+                <input type="number" id="o__hourly_rate">
+                <input type="number" id="o__hours">
+                <input type="number" id="o__overtime_hours">
+                <input type="number" id="o__brutto">
+            </div>
+            <div class="box">
+                <input type="checkbox" id="i__has_vacation_pay">
+                <input type="number" id="i__vacationpay" placeholder="(brutto)">
+                <input type="checkbox" id="i__has_christmas_bonus">
+                <input type="number" id="i__christmas_bonus" placeholder="(brutto)">
+                <input type="checkbox" id="i__has_union">
+                <input type="number" id="i__union_rate" placeholder="(1% of brutto)">
+                <input type="checkbox" id="i__has_ecard">
+                <input type="number" id="i__ecard" placeholder="(12.30)">
+                <input type="checkbox" id="i__has_allowance">
+                <input type="number" id="i__allowance" placeholder="(0.00)">
+                <input type="radio" name="i__commuter" id="i__has_commutersmall">
+                <input type="radio" name="i__commuter" id="i__has_commuterlarge">
+                <input type="number" id="i_commuterkm" placeholder="(0)">
+                <input type="range" min="0" max="6" step="1" id="i_children">
+            </div>
+        </div>
+        <footer id="footer">
+            <span>(c) Copyright 2020 Patrick Goldinger & Andreas Schlager</span>
+            <a href="https://github.com/patrickgold/nettocalc">Visit GitHub Repo</a>
+        </footer>
     </div>
 </body>
 
