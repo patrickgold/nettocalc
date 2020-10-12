@@ -3,7 +3,9 @@ function byID(id){
 }
 
 window.onload = function(){
-   var uiIn = {}
+   var uiIn = {
+       
+   }
    var uiOut = {}
    var comutingAlowanceTable = {
        this:small [
@@ -17,32 +19,10 @@ window.onload = function(){
             [40, 214], // over 40km to 50km
             [60, 306]  // over 60
         ],
-
-        getCA: function(km,bigorsmall){
-           //50,"big" sended -> return -money for big PP
-           if (bigorsmall == "big") {
-               var bi= 0;
-               for (var i = 0; i < big.length; i++) {
-                   if (big[i][0] >= km) {
-                      bi++
-                   }
-               }
-               console.log(big[0][bi])
-               return this.big(big[0][bi])
-           }
-           if (bigorsmall == "small") {
-               var si= 0;
-               for (var i = 0; i < small.length; i++) {
-                   if (small[i][0] >= km) {
-                       si++
-                    }
-                }
-                console.log(small[0][si])
-                return this.big(small[0][si])
-            }
-        } 
    }
-   var incomeTaxTable = {}
+   var incomeTaxTable = {
+
+   }
    var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable);
 
    
