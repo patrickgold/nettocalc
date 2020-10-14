@@ -13,8 +13,8 @@ window.onload = function() {
        brutto: byId("i__brutto"),
        hasUnio: byID("i__has_union"),
        unionRate: byId("i__union_rate"),
-       hasEcrad: byID("i__has_ecard"),
-       ecrd: byID("i__ecard"),
+       hasEcard: byID("i__has_ecard"),
+       ecard: byID("i__ecard"),
        hasAllowance: byID("i__has_allowance"),
        allowance: byID("i__allowance"),
        hasCommuter: byID("i__has_commuter"),
@@ -30,6 +30,7 @@ window.onload = function() {
    
    var uiOut = {
        // Schould set Variables and print Data at UI
+       
    }
 
    var comutingAlowanceTable = {
