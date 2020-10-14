@@ -15,7 +15,7 @@ body {
         "header header"
         "input output"
         "footer footer";
-    grid-template-columns: 55% 45%;
+    grid-template-columns: 50% 50%;
     margin: 0 auto;
     max-width: 1000px;
 }
@@ -94,6 +94,15 @@ body {
 }
 .box .row .out-label {
     width: 70%;
+}
+.box .row .out-label[data-sign="none"]::before {
+    content: "\00a0\00a0";
+}
+.box .row .out-label[data-sign="minus"]::before {
+    content: "- ";
+}
+.box .row .out-label[data-sign="plus"]::before {
+    content: "+ ";
 }
 .box .row .out-value {
     width: 30%;
