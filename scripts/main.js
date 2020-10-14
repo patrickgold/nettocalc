@@ -2,6 +2,10 @@ function byID(id){
     return document.getElementById(id)
 }
 
+function printCalculation(){
+
+}
+
 window.onload = function() {
    var uiIn = {
        // Input from UI
@@ -13,8 +17,8 @@ window.onload = function() {
        brutto: byId("i__brutto"),
        hasUnio: byID("i__has_union"),
        unionRate: byId("i__union_rate"),
-       hasEcrad: byID("i__has_ecard"),
-       ecrd: byID("i__ecard"),
+       hasEcard: byID("i__has_ecard"),
+       ecard: byID("i__ecard"),
        hasAllowance: byID("i__has_allowance"),
        allowance: byID("i__allowance"),
        hasCommuter: byID("i__has_commuter"),
@@ -30,6 +34,19 @@ window.onload = function() {
    
    var uiOut = {
        // Schould set Variables and print Data at UI
+       bruttoAB: byID("o__brutto_ab"),
+       svDna: byID("o__sv_dna"),
+       unionDues: byID("o__union_dues"),
+       ecard: byID("o__ecard"),
+       allowance: byID("o__allowance"),
+       commutingAllowance: byID("o__commuting_allowance"),
+       assessmentBasis: byID("o__assessment_basis"),
+       incomeTaxRate: byID("o__income_tax_rate"),
+       incomeTaxBeforeAVAB: byID("o__income_tax_before_avab"),
+       avab: byID("o__avab"),
+       incomeTax: byID("o__income_tax"),
+       commuterEuro: byID("o__commuter_euro"),
+       IncomeAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
    }
 
    var comutingAlowanceTable = {
