@@ -7,7 +7,7 @@ class Calculation{
         this.output = uiOut;
         this.CAT = comutingAlowanceTable;
         this.ITT = incomeTaxTable;
-        clcNetIncome();
+        //calculater button event listener
     }
     clcNetIncome(){
         var socialInjurance = this.clcSocialInjurance(false);
@@ -16,10 +16,10 @@ class Calculation{
     clcIncomeTax(socialInjurance){
         var assesmentBasis = clcAssesmentBasis(socialInjurance);
         var incomeTaxRateSED = clcIncometaxRate(); //SED...sole-earner deduction
-        var commuterEuro = this.input.km / 6; // 2*km/12
+        var commuterEuro = this.input.commuterKm.value / 6; // 2*commuterKm.value/12
     }
     clcAssesmentBasis(socialInjurance){
-        var unionDues = this.input.workersUnion == true ? (this.brutto * this.input.unionDues > 33.80 ? 33.80 : this.brutto * this.input.unionDues) : 0; //Maximum dues is 33.80€
+        var unionDues = this.input.hasUnion.checked == true ? (this.brutto * this.input.unionDues > 33.80 ? 33.80 : this.brutto * this.input.unionDues) : 0; //Maximum dues is 33.80€
         this.output.unionDues = unionDues;
         var eCard = this.input.eCard == true ? 12.30 : 0; //12.30€
         this.output.eCard = eCard;
@@ -48,7 +48,7 @@ class Calculation{
         if (this.input.bigorsmall == "big") {
             var bi= 0;
             for (var i = 0; i < this.CAT.big.length; i++) {
-                if (this.CAT.big[i][0] >= this.input.km) {
+                if (this.CAT.big[i][0] >= this.input.commuterKm.value) {
                    bi++
                 }
             }
@@ -57,12 +57,27 @@ class Calculation{
         if (this.input.bigorsmall == "small") {
             var si= 0;
             for (var i = 0; i < this.CAT.small.length; i++) {
-                if (this.CAT.small[i][0] >= this.input.kmm) {
+                if (this.CAT.small[i][0] >= this.input.commuterKm.valuem) {
                     si++
                  }
              }
              return this.CAT.small[0][si]
          }
      } 
+    // return % and AVAB (when Children return AVAB for Children)
+           getMTR(AB, Kids) {
+            var i = 0;
+            for (var i = 0; i < Tax.length; i++) {
+                if(tax[i][0] >= AB){
+                    i++
+                }
+            }
+    
+            var ret = {
+                percent: tax[i][1],
+                AVAB: tax[i][2+Kids]
+            };
+            return ret
+        }
 }
 

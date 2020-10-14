@@ -58,21 +58,6 @@ window.onload = function() {
            [83349.33, 55, 5218.80, 5259.97, 5274.55, 5292.88, 5311.22, 5329.55]
        ],
 
-       // return % and AVAB (when Children return AVAB for Children)
-    getMTR: function(AB, Kids) {
-        var i = 0;
-        for (var i = 0; i < Tax.length; i++) {
-            if(tax[i][0] >= AB){
-                i++
-            }
-        }
-
-        var ret = {
-            percent: tax[i][1],
-            AVAB: tax[i][2+Kids]
-        };
-        return ret
-    }
    }
 
    var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable);
