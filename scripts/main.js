@@ -2,11 +2,16 @@ function byID(id){
     return document.getElementById(id)
 }
 
-window.onload = function(){
+window.onload = function() {
    var uiIn = {
-       
+       // Input from UI
+
    }
-   var uiOut = {}
+   
+   var uiOut = {
+       // Schould set Variables and print Data at UI
+   }
+
    var comutingAlowanceTable = {
        small: [
            [20, 58],  // over 20km to 40km
@@ -19,32 +24,6 @@ window.onload = function(){
             [40, 214], // over 40km to 50km
             [60, 306]  // over 60
         ],
-   }
-   var incomeTaxTable = {
-
-        getCA: function(km,bigorsmall) {
-           //50,"big" sended -> return -money from CA
-           if (bigorsmall == "big") {
-               var bi= 0;
-               for (var i = 0; i < big.length; i++) {
-                   if (big[i][0] >= km) {
-                      bi++
-                   }
-               }
-               console.log(big[bi][1])
-               return this.big(big[bi][1])
-           }
-           if (bigorsmall == "small") {
-               var si= 0;
-               for (var i = 0; i < small.length; i++) {
-                   if (small[i][0] >= km) {
-                       si++
-                    }
-                }
-                console.log(small[si][1])
-                return this.big(small[si][1])
-            }
-        } 
     }
 
    var incomeTaxTable = {
