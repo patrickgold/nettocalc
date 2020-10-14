@@ -3,7 +3,7 @@ html, body { height: 100%; }
 body {
     background-color: #000b1c;
     color: #e5e5e5;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     width: 100%;
 }
@@ -15,6 +15,7 @@ body {
         "header header"
         "input output"
         "footer footer";
+    grid-template-columns: 55% 45%;
     margin: 0 auto;
     max-width: 1000px;
 }
@@ -30,8 +31,14 @@ body {
     text-align: center;
     width: 100%;
 }
+.column > #calculate_btn {
+    margin: 16px 0 0 auto;
+}
 #input {
     grid-area: input;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 #output {
     grid-area: output;
@@ -47,19 +54,29 @@ body {
 .box + .box {
     margin-top: 16px;
 }
-.box > h3 {
+.box h3 {
     margin: 4px 4px 16px 4px;
 }
-.box > .row {
-    display: block;
+.box .row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     margin: 8px 0;
     width: 100%;
 }
-.box > .row > .checkbox_placeholder {
+.box .row > .row {
+    margin: 8px 0 0 0;
+}
+.box .row .checkbox_placeholder {
     margin: 0 4px;
     visibility: hidden;
 }
-.box > .row > input[type="number"] {
+.box .row input[type="checkbox"]:not(.checkbox_placeholder):first-child:not(:checked) ~ *,
+.box .row input[type="radio"]:first-child:not(:checked) ~ * {
+    opacity: 0.5;
+}
+.box .row input[type="number"] {
+    align-self: flex-end;
     margin: 0 0 0 auto;
     width: 40%;
 }
@@ -70,6 +87,19 @@ body {
     box-shadow: none;
     color: #e5e5e5;
     padding: 8px;
+}
+.box .row.divider {
+    border-top: 1px dotted #e5e5e5;
+    margin: 0;
+}
+.box .row .out-label {
+    width: 70%;
+}
+.box .row .out-value {
+    width: 30%;
+}
+.box .row .out-value {
+    text-align: right;
 }
 
 #footer {
