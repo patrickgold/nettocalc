@@ -2,54 +2,67 @@
 
 
 class Calculation{
-    constructor(uiIn,uiOut){
+    constructor(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable){
         this.input = uiIn;
         this.output = uiOut;
-
-        calculateNetIncome();
+        this.CAT = comutingAlowanceTable;
+        this.ITT = incomeTaxTable;
+        clcNetIncome();
     }
-    calculateNetIncome(){
-        var socialInjurance = this.calculateSocialInjurance(false);
-        var IncomeTax = this.calculateIncomeTax(socialInjurance);
+    clcNetIncome(){
+        var socialInjurance = this.clcSocialInjurance(false);
+        var IncomeTax = this.clcIncomeTax(socialInjurance);
     }
-    calculateIncomeTax(socialInjurance){
-        var assesmentBasis = calculateAssesmentBasis(socialInjurance);
+    clcIncomeTax(socialInjurance){
+        var assesmentBasis = clcAssesmentBasis(socialInjurance);
+        var incomeTaxRateSED = clcIncometaxRate(); //SED...sole-earner deduction
+        var commuterEuro = this.input.km / 6; // 2*km/12
     }
-    calculateAssesmentBasis(socialInjurance){
-        var unionDues = this.input.workersUnion == true ? (this.brutto * this.input.unionDues > 33.80 ? 33.80 : this.brutto * this.input.unionDues) : 0;
+    clcAssesmentBasis(socialInjurance){
+        var unionDues = this.input.workersUnion == true ? (this.brutto * this.input.unionDues > 33.80 ? 33.80 : this.brutto * this.input.unionDues) : 0; //Maximum dues is 33.80€
         this.output.unionDues = unionDues;
-        var eCard = this.input.eCard == true ? 12.30 : 0;
+        var eCard = this.input.eCard == true ? 12.30 : 0; //12.30€
         this.output.eCard = eCard;
-        this.output.allowenceAmount = this.input.allowence == true ? this.input.allowenceAmount : 0;
-       
+        var allowanceAmount = this.input.allowance == true ? this.input.allowanceAmount : 0;
+        this.output.allowanceAmount = allowanceAmount;
+        var commutingAllowance = this.input.commutingAllowance == true ? clcComutingAllowance() : 0;
+        this.output.commutingAllowance = commutingAllowance;
+        var assesmentBasis = this.input.brutto - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
+        this.output.assesmentBasis = assesmentBasis;
+        return assesmentBasis;
     }
     /**
      * 
      * @param {Boolean} holiday_bonus If its calculating the stantard social injurence or the reduced one for christams/vecation pay 
      */
-    calculateSocialInjurance(holiday_bonus){
+    clcSocialInjurance(holiday_bonus){
         if(holiday_bonus){
-            return this.input.holiday_pay * 0.1712;
+            return this.input.holiday_pay * 0.1712; //17.12%
         }
         else{
-            return this.input.brutto > 5370 ? 5370 * 0.1812 : this.input.brutto * 0.1812;
+            return this.input.brutto > 5370 ? 5370 * 0.1812 : this.input.brutto * 0.1812; //18.12% with a maximumof 5370€
         }
     }
-    calculateComutingAllowence(){
-        if(this.input.comutingAllowence){
-            if(this.input.comutingAllowenceBig){
-
+    clcComutingAllowance(){
+        //50,"big" sended -> return -money for big PP
+        if (this.input.bigorsmall == "big") {
+            var bi= 0;
+            for (var i = 0; i < this.CAT.big.length; i++) {
+                if (this.CAT.big[i][0] >= this.input.km) {
+                   bi++
+                }
             }
-            else if(this.input.comutingAllowenceSmall){
-
-            }
-            else{
-                return 0;
-            }
+            return this.CAT.big[0][bi];
         }
-        else{
-            return 0;
-        }
-    }
+        if (this.input.bigorsmall == "small") {
+            var si= 0;
+            for (var i = 0; i < this.CAT.small.length; i++) {
+                if (this.CAT.small[i][0] >= this.input.kmm) {
+                    si++
+                 }
+             }
+             return this.CAT.small[0][si]
+         }
+     } 
 }
 

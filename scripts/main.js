@@ -2,8 +2,10 @@ function byID(id){
     return document.getElementById(id)
 }
 
-window.onload = function() {
-   var uiIn = {}
+window.onload = function(){
+   var uiIn = {
+       
+   }
    var uiOut = {}
    var comutingAlowanceTable = {
        small: [
@@ -17,6 +19,8 @@ window.onload = function() {
             [40, 214], // over 40km to 50km
             [60, 306]  // over 60
         ],
+   }
+   var incomeTaxTable = {
 
         getCA: function(km,bigorsmall) {
            //50,"big" sended -> return -money from CA
