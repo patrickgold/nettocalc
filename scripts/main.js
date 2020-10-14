@@ -71,7 +71,6 @@ window.onload = function() {
         return ret
     }
    }
-   var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable);
 
-   
+   var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable);
 }
