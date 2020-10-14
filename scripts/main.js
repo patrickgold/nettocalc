@@ -5,7 +5,27 @@ function byID(id){
 window.onload = function() {
    var uiIn = {
        // Input from UI
-
+       bruttoType: byID("i__brutto_type_hourly"),
+       hourlyRate: byID("i__hourly_Rate"),
+       hours: byId("i__hours"),
+       overtimeHours: byID("i__overtime_hours"),
+       bruttoType: byID("i__brutto_type_given"),
+       brutto: byId("i__brutto"),
+       hasUnio: byID("i__has_union"),
+       unionRate: byId("i__union_rate"),
+       hasEcrad: byID("i__has_ecard"),
+       ecrd: byID("i__ecard"),
+       hasAllowance: byID("i__has_allowance"),
+       allowance: byID("i__allowance"),
+       hasCommuter: byID("i__has_commuter"),
+       hasCommuterSmall: byID("i__has_commutersmall"),
+       hasCommuterLarge: byID("i__has_commuterlarge"),
+       commuterKm: byID("i_commuterkm"),
+       children: byID("i_children"),
+       hasVacationPay: byID("i__has_vacation_pay"),
+       vacationPay: byId("i__vacationpay"),
+       hasChristmasBonus: byID("i__has_christmas_bonus"),
+       christmasBonus: byID("i__christmas_bonus"),
    }
    
    var uiOut = {
