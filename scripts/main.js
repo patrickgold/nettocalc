@@ -2,9 +2,6 @@ function byID(id){
     return document.getElementById(id)
 }
 
-function printCalculation(){
-
-}
 
 window.onload = function() {
    var uiIn = {
@@ -76,6 +73,8 @@ window.onload = function() {
        ],
 
    }
+   
+   var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable,overtime);
 
-   var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable);
+
 }

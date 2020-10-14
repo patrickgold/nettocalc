@@ -1,12 +1,11 @@
-
-
-
 class Calculation{
-    constructor(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable){
+    constructor(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime){
         this.input = uiIn;
         this.output = uiOut;
         this.CAT = comutingAlowanceTable;
         this.ITT = incomeTaxTable;
+        this.OT = overtime;
+        this.overtime = new Overtime(uiIn,uiOut);
         var that = this;
         this.templELclcButton = function(){that.clcNetIncome()};
         var tmp = document.getElementById("clc_btn");
@@ -16,10 +15,11 @@ class Calculation{
     }
     clcNetIncome(){
         if(this.input.bruttoType == "given"){
-            var socialInjurance = this.clcSocialInjurance(false);
+            var socialInjurance = this.clcSocialInjurance();
             var IncomeTax = this.clcIncomeTax(socialInjurance);
             var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.eCard.value - this.output.unionDues.value;
         }
+
     }
     clcIncomeTax(socialInjurance){
         var assesmentBasis = clcAssesmentBasis(socialInjurance);
@@ -41,17 +41,9 @@ class Calculation{
         this.output.assesmentBasis = assesmentBasis;
         return assesmentBasis;
     }
-    /**
-     * 
-     * @param {Boolean} holiday_bonus If its calculating the stantard social injurence or the reduced one for christams/vecation pay 
-     */
-    clcSocialInjurance(holiday_bonus){
-        if(holiday_bonus){
-            return this.input.holiday_pay * 0.1712; //17.12%
-        }
-        else{
-            return this.input.brutto.value > 5370 ? 5370 * 0.1812 : this.input.brutto.value * 0.1812; //18.12% with a maximumof 5370€
-        }
+    
+    clcSocialInjurance(){
+        return this.input.brutto.value > 5370 ? 5370 * 0.1812 : this.input.brutto.value * 0.1812; //18.12% with a maximumof 5370€
     }
     /**
      * Calculates the comuting allowance
