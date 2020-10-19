@@ -92,6 +92,10 @@ body {
     border-top: 1px dotted #e5e5e5;
     margin: 0;
 }
+.box .row.space {
+    height: 16px;
+    margin: 0;
+}
 .box .row .out-label {
     width: 70%;
 }

@@ -9,6 +9,11 @@
     <meta name="description" content="">
     <title>nettocalc for WIR</title>
     <link rel="stylesheet" href="/styles/nettocalc.css" type="text/css">
+    <script src="scripts/bonus.js"></script>
+    <script src="scripts/calculator.js"></script>
+    <script src="scripts/holiday_pay.js"></script>
+    <script src="scripts/overtime.js"></script>
+    <script src="scripts/main.js"></script>
 </head>
 
 <body>
@@ -33,6 +38,19 @@
                         <label>Hours worked:</label>
                         <input type="number" id="i__hours" placeholder="(0)">
                     </span>
+                </span>
+                <span class="row">
+                    <input type="radio" name="i__brutto_type" id="i__brutto_type_given">
+                    <label for="i__brutto_type_given">Given</label>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Brutto:</label>
+                        <input type="number" id="i__brutto" placeholder="(0)">
+                    </span>
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_overtime">
+                    <label for="i__has_overtime">Overtime</label>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
                         <label>Overtime hours:</label>
@@ -43,14 +61,10 @@
                         <label>Overtime divider: (1/n)</label>
                         <input type="number" id="i__overtime_divider" placeholder="(158)">
                     </span>
-                </span>
-                <span class="row">
-                    <input type="radio" name="i__brutto_type" id="i__brutto_type_given">
-                    <label for="i__brutto_type_given">Given</label>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Brutto:</label>
-                        <input type="number" id="i__brutto" placeholder="(0)">
+                        <label>Overtime award:</label>
+                        <input type="number" id="i__overtime_divider" placeholder="(50%)">
                     </span>
                 </span>
             </div>
@@ -107,7 +121,89 @@
         <div class="column" id="output">
             <h2>Output</h2>
             <div class="box">
-                PLACEHOLDER FOR BRUTTO CALC
+                <h3>Overtime loan</h3>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime hourly loan</span>
+                    <span class="out-value" id="o__oc_overtime_hourly_loan">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime base loan</span>
+                    <span class="out-value" id="o__oc_overtime_base_loan">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime addition</span>
+                    <span class="out-value" id="o__oc_overtime_addition">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime 10</span>
+                    <span class="out-value" id="o__oc_overtime_first_10">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime other</span>
+                    <span class="out-value" id="o__oc_overtime_other">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Overtime total</span>
+                    <span class="out-value" id="o__oc_overtime_total">0.000,-&nbsp;</span>
+                </span>
+                <span class="row space"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-value" id="o__oc_brutto_ab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="plus">Overtime</span>
+                    <span class="out-value" id="o__oc_overtime_loan">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-value" id="o__oc_sv_dna">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">Incomne tax (10h)</span>
+                    <span class="out-value" id="o__oc_income_tax_10h">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Assessment basis</span>
+                    <span class="out-value" id="o__oc_assessment_basis">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" id="o__oc_income_tax_rate" data-sign="none">0%</span>
+                    <span class="out-value" id="o__oc_income_tax_before_avab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">AVAB</span>
+                    <span class="out-value" id="o__oc_avab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Income tax</span>
+                    <span class="out-value" id="o__oc_income_tax_after_avab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row space"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-value" id="o__brutto_ab_2">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="plus">Overtime</span>
+                    <span class="out-value" id="o__oc_overtime_loan_2">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-value" id="o__oc_sv_dna_2">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">Income tax</span>
+                    <span class="out-value" id="o__oc_income_tax">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Netto</span>
+                    <span class="out-value" id="o__oc_netto">0.000,-&nbsp;</span>
+                </span>
             </div>
             <div class="box">
                 <span class="row">
