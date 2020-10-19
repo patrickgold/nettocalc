@@ -2,7 +2,6 @@ function byID(id){
     return document.getElementById(id)
 }
 
-
 window.onload = function() {
    var uiIn = {
        // Input from UI
