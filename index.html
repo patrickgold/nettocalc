@@ -16,16 +16,18 @@
     <script src="scripts/main.js"></script>
 </head>
 
-<body>
+<body class="no-user-select">
     <input type="radio" name="lang" id="lang-en">
-    <input type="radio" name="lang" id="lang-de">
+    <input type="radio" name="lang" id="lang-de" checked>
     <div id="body">
         <header id="header">
             <h1>nettocalc</h1>
-            <span class="lang-selection">
+            <span class="header-right">
                 <button id="calculate_btn">Calculate</button>
-                <label for="lang-en" class="lang-selection-item">EN</label>
-                <label for="lang-de" class="lang-selection-item">DE</label>
+                <span class="lang-selection">
+                    <label for="lang-en" class="lang-selection-item">EN</label>
+                    <label for="lang-de" class="lang-selection-item">DE</label>
+                </span>
             </span>
         </header>
         <div class="column" id="input">
@@ -62,6 +64,7 @@
                         <input type="number" id="i__brutto" placeholder="(0)">
                     </span>
                 </span>
+                <span class="row space"></span>
                 <span class="row">
                     <input type="checkbox" id="i__has_overtime">
                     <label for="i__has_overtime" lang="en">Überstunden</label>
@@ -82,7 +85,7 @@
                         <input type="checkbox" class="checkbox_placeholder">
                         <label lang="en">Overtime award:</label>
                         <label lang="de">Überstundenzuschlag:</label>
-                        <input type="number" id="i__overtime_divider" placeholder="(50%)">
+                        <input type="number" id="i__overtime_award" placeholder="(50%)">
                     </span>
                 </span>
             </div>
@@ -99,7 +102,7 @@
                     <input type="checkbox" id="i__has_ecard">
                     <label for="i__has_ecard" lang="en">E-Card:</label>
                     <label for="i__has_ecard" lang="de">E-Card:</label>
-                    <input type="number" id="i__ecard" placeholder="(12.30)" data-unit="€">
+                    <input type="number" id="i__ecard" placeholder="(12,30)" data-unit="€">
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_allowance">
@@ -146,7 +149,7 @@
                 </span>
             </div>
         </div>
-        <div class="column" id="output">
+        <div class="column user-select" id="output">
             <h2 lang="en">Output</h2>
             <h2 lang="de">Ausgabe</h2>
             <div class="box">
