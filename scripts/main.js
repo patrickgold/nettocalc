@@ -5,14 +5,14 @@ function byID(id){
 window.onload = function() {
    var uiIn = {
        // Input from UI
-       bruttoType: byID("i__brutto_type_hourly"),
+       bruttoTypeHourly: byID("i__brutto_type_hourly"),
        hourlyRate: byID("i__hourly_Rate"),
-       hours: byId("i__hours"),
+       hours: byID("i__hours"),
        overtimeHours: byID("i__overtime_hours"),
-       bruttoType: byID("i__brutto_type_given"),
-       brutto: byId("i__brutto"),
-       hasUnio: byID("i__has_union"),
-       unionRate: byId("i__union_rate"),
+       bruttoTypeGiven: byID("i__brutto_type_given"),
+       brutto: byID("i__brutto"),
+       hasUnion: byID("i__has_union"),
+       unionRate: byID("i__union_rate"),
        hasEcard: byID("i__has_ecard"),
        ecard: byID("i__ecard"),
        hasAllowance: byID("i__has_allowance"),
@@ -22,14 +22,31 @@ window.onload = function() {
        hasCommuterLarge: byID("i__has_commuterlarge"),
        commuterKm: byID("i_commuterkm"),
        children: byID("i_children"),
+       hasChildren: byID("i__has_children"),
+
+       // Vacation
        hasVacationPay: byID("i__has_vacation_pay"),
-       vacationPay: byId("i__vacationpay"),
+       vacationPay: byID("i__vacationpay"),
+
+       // Bonuses
        hasChristmasBonus: byID("i__has_christmas_bonus"),
        christmasBonus: byID("i__christmas_bonus"),
+
+       // Overtime Inputs
+       hours: byID("i__hours"),
+       hourlyRate: byID("i__hourly_rate"),
+       overtimeHours: byID("i__overtime_hours"),
+       overtimeDevider: byID("i__overtime_devider"),
+       bruttoTypeHourly: byID("i__brutto_type_hourly"),
+       hasOvertime: byID("i__has_overtime"),
+       overtimeDivider: byID("i__overtime_divider"),
+
+       // Calcutae Button
+       calculateBtn: byID("calculate_btn"),
    }
    
    var uiOut = {
-       // Schould set Variables and print Data at UI
+       // Outputs for UI
        bruttoAB: byID("o__brutto_ab"),
        svDna: byID("o__sv_dna"),
        unionDues: byID("o__union_dues"),
@@ -43,6 +60,27 @@ window.onload = function() {
        incomeTax: byID("o__income_tax"),
        commuterEuro: byID("o__commuter_euro"),
        IncomeAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
+
+       // Overtime Output
+       OcOvertimeHourlyLoan: byID("o__oc_overtime_hourly_loan"),
+       OcOvertimeAddition: byID("o__oc_overtime_addition"),
+       OcOvertimeFirst10: byID("o__oc_overtime_first_10"),
+       OcOvertimeOther: byID("o__oc_overtime_other"),
+       OcOvertimeTotal: byID("o__oc_overtime_total"),
+       OcBruttoAB: byID("o__oc_brutto_ab"),
+       OcOvertimeLoan: byID("o__oc_overtime_loan"),
+       OcSvDna: byID("o__oc_sv_dna"),
+       OcIncomeTax10h: byID("o__oc_income_tax_10h"),
+       OcAssassmentBasis: byID("o__oc_assessment_basis"),
+       OcIncomeTaxRate: byID("o__oc_income_tax_rate"),
+       OcIncomeTaxBeforeAvab: byID("o__oc_income_tax_before_avab"),
+       OcAvab: byID("o__oc_avab"),
+       OcIncomeTaxAfterAvab: byID("o__oc_income_tax_after_avab"),
+       BruttoAb2: byID("o__brutto_ab_2"),
+       OcOvertimeLoan2: byID("o__oc_overtime_loan_2"),
+       OcSvDna2: byID("o__oc_sv_dna_2"),
+       OcIncomeTax: byID("o__oc_income_tax"),
+       OcNetto: byID("o__oc_netto"),
    }
 
    var comutingAlowanceTable = {
@@ -70,10 +108,9 @@ window.onload = function() {
            [ 7516.00, 50, 1051.33, 1092.50, 1107.08, 1125.42, 1143.76, 1162.09],
            [83349.33, 55, 5218.80, 5259.97, 5274.55, 5292.88, 5311.22, 5329.55]
        ],
-
    }
-   
-   var calc = new Calculation(uiIn,uiOut,comutingAlowenceTable,incomeTaxTable,overtime);
+   var overtime = new Overtime(uiIn,uiOut);
+   var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
 
 
 }

@@ -8,38 +8,46 @@ class Calculation{
         this.overtime = new Overtime(uiIn,uiOut);
         var that = this;
         this.templELclcButton = function(){that.clcNetIncome()};
-        var tmp = document.getElementById("clc_btn");
+        var tmp = document.getElementById("calculate_btn");
         if(tmp != null){
-            tmp.addEventListener("click",that.templELnoFocus);
+            tmp.addEventListener("click",that.templELclcButton);
         }
     }
     clcNetIncome(){
-        if(this.input.bruttoType == "given"){
+        if(this.input.bruttoTypeGiven.checked == true){
+            this.output.bruttoAB.innerHTML = this.input.brutto.value;
             var socialInjurance = this.clcSocialInjurance();
-            var IncomeTax = this.clcIncomeTax(socialInjurance);
-            var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.eCard.value - this.output.unionDues.value;
+            this.output.svDna.innerHTML = socialInjurance;
+            var incomeTax = this.clcIncomeTax(socialInjurance);
+            var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.ecard.value - this.output.unionDues.value;
         }
-
+        else if(this.input.bruttoTypeHourly.checked == true){
+            this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
+            this.output.bruttoAB.innerHTML = this.input.brutto.value;
+        }
     }
     clcIncomeTax(socialInjurance){
-        var assesmentBasis = clcAssesmentBasis(socialInjurance);
-        var incomeTax = clcMTR(assesmentBasis);
+        var assesmentBasis = this.clcAssesmentBasis(socialInjurance);
+        var incomeTax = this.clcMTR(assesmentBasis);
         var commuterEuro = this.input.commuterKm.value / 6; // 2*commuterKm.value/12
+        this.output.commuterEuro.innerHTML = commuterEuro;
         var incomeTaxACE = incomeTax - commuterEuro; //ACE...after commuter euro
+        this.output.IncomeTaxAfterCommuterEuro.innerHTML = incomeTaxACE;
         return incomeTaxACE;
     }
     clcAssesmentBasis(socialInjurance){
-        var unionDues = this.input.hasUnion.checked == true ? (this.input.brutto.value * this.input.unionRate.value > 33.80 ? 33.80 : this.input.brutto.value * this.input.unionRate.value) : 0; //Maximum dues is 33.80€
-        this.output.unionDues = unionDues;
-        var eCard = this.input.hasEcard.checked == true ? this.input.ecard.value : 0; //12.30€
-        this.output.eCard = eCard;
+        var unionRate = this.input.unionRate.value != "" ? this.input.unionRate.value * 0.01 : 0.01;
+        var unionDues = this.input.hasUnion.checked == true ? ((this.input.brutto.value * unionRate >= 33.80) ? 33.80 : (this.input.brutto.value * unionRate)) : 0; //Maximum dues is 33.80€
+        this.output.unionDues.innerHTML = unionDues;
+        var eCard = this.input.hasEcard.checked == true ? (this.input.ecard.value != "" ? this.input.ecard.value : 12.30) : 0; //12.30€
+        this.output.ecard.innerHTML = eCard;
         var allowanceAmount = this.input.hasAllowance.checked == true ? this.input.allowance.value : 0;
-        this.output.allowanceAmount = allowanceAmount;
-        var commutingAllowance = this.input.hasCommuter.value == true ? clcComutingAllowance() : 0;
-        this.output.commutingAllowance = commutingAllowance;
-        var assesmentBasis = this.input.brutto.value - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
-        this.output.assesmentBasis = assesmentBasis;
-        return assesmentBasis;
+        this.output.allowance.innerHTML = allowanceAmount;
+        var commutingAllowance = this.input.hasCommuter.checked == true ? this.clcComutingAllowance() : 0;
+        this.output.commutingAllowance.innerHTML = commutingAllowance;
+        var assessmentBasis = this.input.brutto.value - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
+        this.output.assessmentBasis.innerHTML = assessmentBasis;
+        return assessmentBasis;
     }
     
     clcSocialInjurance(){
@@ -51,41 +59,45 @@ class Calculation{
     clcComutingAllowance(){
         //50,"big" sended -> return -money for big PP
         if (this.input.hasCommuterLarge.checked == true) {
-            var bi= 0;
-            for (var i = 0; i < this.CAT.big.length; i++) {
-                if (this.CAT.big[i][0] >= this.input.commuterKm.value) {
-                   bi++
+            var bi= -1;
+            for (var i = 0; i < 4; i++) {
+                if (this.CAT.big[i][0] <= this.input.commuterKm.value) {
+                   bi++;
                 }
             }
-            return this.CAT.big[0][bi];
+            return this.CAT.big[bi][1];
         }
         if (this.input.hasCommuterSmall.checked == true) {
-            var si= 0;
-            for (var i = 0; i < this.CAT.small.length; i++) {
-                if (this.CAT.small[i][0] >= this.input.commuterKm.valuem) {
-                    si++
+            var si= -1;
+            for (var i = 0; i < 3; i++) {
+                if (this.CAT.small[i][0] <= this.input.commuterKm.value) {
+                    si++;
                  }
              }
-             return this.CAT.small[0][si]
+             return this.CAT.small[si][1]
          }
     }
     /**
-     * Gets assesment base and returns the income tax 
-     * @param {integer} AB assesment base for the tax rate
+     * Gets assessment base and returns the income tax 
+     * @param {integer} AB assessment base for the tax rate
      */ 
     clcMTR(AB) {
-        var i = 0;
-        for (var i = 0; i < this.input.ITT.tax.length; i++) {
-            if(this.input.ITT.tax[i][0] >= AB){
+        var i = -1;
+        for (var j = 0; j < 6; j++) {
+            if(this.ITT.tax[j][0] <= AB){
                 i++
             }
         }
-    
-        
-        var rate = this.input.ITT.tax[i][1]
-        var sea = this.input.ITT.tax[i][2+this.input.children.value]
+        var rate = this.ITT.tax[i][1]
+        var seaColumn = parseInt((this.input.children.value != "" ? this.input.children.value : "0")) + 2;
+        var sea = this.ITT.tax[i][seaColumn]
+        this.output.incomeTaxRate.innerHTML = rate;
+        this.output.avab.innerHTML = sea;
         //set rate and sea to output
-        var incomeTax = rate * AB - sea;
+        var incomeTaxBSEA = rate * AB * 0.01;
+        this.output.incomeTaxBeforeAVAB.innerHTML = incomeTaxBSEA;
+        var incomeTax = incomeTaxBSEA - sea;
+        this.output.incomeTax.innerHTML = incomeTax;
         return incomeTax;
     }
 }
