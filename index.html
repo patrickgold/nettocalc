@@ -17,156 +17,197 @@
 </head>
 
 <body>
+    <input type="radio" name="lang" id="lang-en">
+    <input type="radio" name="lang" id="lang-de">
     <div id="body">
         <header id="header">
             <h1>nettocalc</h1>
+            <span class="lang-selection">
+                <button id="calculate_btn">Calculate</button>
+                <label for="lang-en" class="lang-selection-item">EN</label>
+                <label for="lang-de" class="lang-selection-item">DE</label>
+            </span>
         </header>
         <div class="column" id="input">
-            <h2>Input</h2>
+            <h2 lang="en">Input</h2>
+            <h2 lang="de">Eingabe</h2>
             <div class="box">
-                <h3>Brutto wage</h3>
+                <h3 lang="en">Brutto wage</h3>
+                <h3 lang="de">Bruttogehalt</h3>
                 <span class="row">
                     <input type="radio" name="i__brutto_type" id="i__brutto_type_hourly" checked>
-                    <label for="i__brutto_type_hourly">Hourly</label>
+                    <label for="i__brutto_type_hourly" lang="en">Hourly</label>
+                    <label for="i__brutto_type_hourly" lang="de">Stündlich</label>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Hourly rate:</label>
+                        <label lang="en">Hourly rate:</label>
+                        <label lang="de">Stundenlohn:</label>
                         <input type="number" id="i__hourly_rate" placeholder="(0)">
                     </span>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Hours worked:</label>
+                        <label lang="en">Hours worked:</label>
+                        <label lang="de">Stunden gearbeitet:</label>
                         <input type="number" id="i__hours" placeholder="(0)">
                     </span>
                 </span>
                 <span class="row">
                     <input type="radio" name="i__brutto_type" id="i__brutto_type_given">
-                    <label for="i__brutto_type_given">Given</label>
+                    <label for="i__brutto_type_given" lang="en">Given</label>
+                    <label for="i__brutto_type_given" lang="de">Gegeben</label>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Brutto:</label>
+                        <label lang="en">Brutto:</label>
+                        <label lang="de">Brutto:</label>
                         <input type="number" id="i__brutto" placeholder="(0)">
                     </span>
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_overtime">
-                    <label for="i__has_overtime">Overtime</label>
+                    <label for="i__has_overtime" lang="en">Überstunden</label>
+                    <label for="i__has_overtime" lang="de">Überstunden</label>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Overtime hours:</label>
+                        <label lang="en">Overtime hours:</label>
+                        <label lang="de">Anzahl der Überstunden:</label>
                         <input type="number" id="i__overtime_hours" placeholder="(0)">
                     </span>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Overtime divider: (1/n)</label>
+                        <label lang="en">Overtime divider: (1/n)</label>
+                        <label lang="de">Überstundenteiler: (1/n)</label>
                         <input type="number" id="i__overtime_divider" placeholder="(158)">
                     </span>
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
-                        <label>Overtime award:</label>
+                        <label lang="en">Overtime award:</label>
+                        <label lang="de">Überstundenzuschlag:</label>
                         <input type="number" id="i__overtime_divider" placeholder="(50%)">
                     </span>
                 </span>
             </div>
             <div class="box">
-                <h3>Base services</h3>
+                <h3 lang="en">Base services</h3>
+                <h3 lang="de">Grunddienste</h3>
                 <span class="row">
                     <input type="checkbox" id="i__has_union">
-                    <label for="i__has_union">Union rate:</label>
+                    <label for="i__has_union" lang="en">Union rate:</label>
+                    <label for="i__has_union" lang="de">Gewerkschaftsbeitrag:</label>
                     <input type="number" id="i__union_rate" placeholder="(1% of brutto)" data-unit="%">
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_ecard">
-                    <label for="i__has_ecard">E-Card:</label>
+                    <label for="i__has_ecard" lang="en">E-Card:</label>
+                    <label for="i__has_ecard" lang="de">E-Card:</label>
                     <input type="number" id="i__ecard" placeholder="(12.30)" data-unit="€">
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_allowance">
-                    <label for="i__has_allowance">Allowance:</label>
+                    <label for="i__has_allowance" lang="en">Allowance:</label>
+                    <label for="i__has_allowance" lang="de">Freibetrag:</label>
                     <input type="number" id="i__allowance" placeholder="(0.00)" data-unit="€">
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_commuter">
-                    <label for="i__has_commuter">Commuter:</label>
+                    <label for="i__has_commuter" lang="en">Commuter:</label>
+                    <label for="i__has_commuter" lang="de">Pendlerpauschale:</label>
                     <input type="number" id="i_commuterkm" placeholder="(0)">
                     <span class="row">
                         <input type="checkbox" class="checkbox_placeholder">
                         <input type="radio" name="i__has_commuter" id="i__has_commutersmall" checked>
-                        <label for="i__has_commutersmall">Small</label>
+                        <label for="i__has_commutersmall" lang="en">Small</label>
+                        <label for="i__has_commutersmall" lang="de">Klein</label>
                         <input type="radio" name="i__has_commuter" id="i__has_commuterlarge">
-                        <label for="i__has_commuterlarge">Large</label>
+                        <label for="i__has_commuterlarge" lang="en">Large</label>
+                        <label for="i__has_commuterlarge" lang="de">Groß</label>
                     </span>
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_children">
-                    <label for="i__has_children">Children:</label>
+                    <label for="i__has_children" lang="en">Children:</label>
+                    <label for="i__has_children" lang="de">Kinder:</label>
                     <input type="number" id="i_children" placeholder="(0)">
                 </span>
             </div>
             <div class="box">
-                <h3>Additional benefits</h3>
+                <h3 lang="en">Additional benefits</h3>
+                <h3 lang="de">Zuschüsse</h3>
                 <span class="row">
                     <input type="checkbox" id="i__has_vacation_pay">
-                    <label for="i__has_vacation_pay">Vacation pay:</label>
+                    <label for="i__has_vacation_pay" lang="en">Vacation pay:</label>
+                    <label for="i__has_vacation_pay" lang="de">Urlaubsgeld:</label>
                     <input type="number" id="i__vacationpay" placeholder="(brutto)">
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_christmas_bonus">
-                    <label for="i__has_christmas_bonus">Christmas bonus:</label>
+                    <label for="i__has_christmas_bonus" lang="en">Christmas bonus:</label>
+                    <label for="i__has_christmas_bonus" lang="de">Weihnachtsgeld:</label>
                     <input type="number" id="i__christmas_bonus" placeholder="(brutto)">
                 </span>
             </div>
-            <button id="calculate_btn">Calculate</button>
         </div>
         <div class="column" id="output">
-            <h2>Output</h2>
+            <h2 lang="en">Output</h2>
+            <h2 lang="de">Ausgabe</h2>
             <div class="box">
-                <h3>Overtime loan</h3>
+                <h3 lang="en">Overtime loan</h3>
+                <h3 lang="de">Überstundenlohn</h3>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime hourly loan</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime hourly loan</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstunden Stundenlohn</span>
                     <span class="out-value" id="o__oc_overtime_hourly_loan">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime base loan</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime base loan</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstundengrundlohn</span>
                     <span class="out-value" id="o__oc_overtime_base_loan">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime addition</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime addition</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstundenzuschlag</span>
                     <span class="out-value" id="o__oc_overtime_addition">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime 10</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime hours (first 10)</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstunden (erste 10)</span>
                     <span class="out-value" id="o__oc_overtime_first_10">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime other</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime hours (> 10)</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstunden (> 10)</span>
                     <span class="out-value" id="o__oc_overtime_other">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Overtime total</span>
+                    <span class="out-label" data-sign="none" lang="en">Overtime total</span>
+                    <span class="out-label" data-sign="none" lang="de">Überstunden gesamt</span>
                     <span class="out-value" id="o__oc_overtime_total">0.000,-&nbsp;</span>
                 </span>
                 <span class="row space"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="en">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto</span>
                     <span class="out-value" id="o__oc_brutto_ab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="plus">Overtime</span>
+                    <span class="out-label" data-sign="plus" lang="en">Overtime</span>
+                    <span class="out-label" data-sign="plus" lang="de">Überstunden</span>
                     <span class="out-value" id="o__oc_overtime_loan">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="en">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="de">SV-DNA</span>
                     <span class="out-value" id="o__oc_sv_dna">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">Incomne tax (10h)</span>
+                    <span class="out-label" data-sign="minus" lang="en">Incomne tax (10h)</span>
+                    <span class="out-label" data-sign="minus" lang="de">Lohnsteuer (10h)</span>
                     <span class="out-value" id="o__oc_income_tax_10h">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Assessment basis</span>
+                    <span class="out-label" data-sign="none" lang="en">Assessment basis</span>
+                    <span class="out-label" data-sign="none" lang="de">Lst-BMGL</span>
                     <span class="out-value" id="o__oc_assessment_basis">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
@@ -174,65 +215,81 @@
                     <span class="out-value" id="o__oc_income_tax_before_avab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">AVAB</span>
+                    <span class="out-label" data-sign="minus" lang="en">AVAB</span>
+                    <span class="out-label" data-sign="minus" lang="de">AVAB</span>
                     <span class="out-value" id="o__oc_avab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Income tax</span>
+                    <span class="out-label" data-sign="none" lang="en">Income tax</span>
+                    <span class="out-label" data-sign="none" lang="de">Lohnsteuer</span>
                     <span class="out-value" id="o__oc_income_tax_after_avab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row space"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="en">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto</span>
                     <span class="out-value" id="o__brutto_ab_2">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="plus">Overtime</span>
+                    <span class="out-label" data-sign="plus" lang="en">Overtime</span>
+                    <span class="out-label" data-sign="plus" lang="de">Überstunden</span>
                     <span class="out-value" id="o__oc_overtime_loan_2">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="en">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="de">SV-DNA</span>
                     <span class="out-value" id="o__oc_sv_dna_2">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">Income tax</span>
+                    <span class="out-label" data-sign="minus" lang="en">Income tax</span>
+                    <span class="out-label" data-sign="minus" lang="de">Lohnsteuer</span>
                     <span class="out-value" id="o__oc_income_tax">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Netto</span>
+                    <span class="out-label" data-sign="none" lang="en">Netto</span>
+                    <span class="out-label" data-sign="none" lang="de">Netto</span>
                     <span class="out-value" id="o__oc_netto">0.000,-&nbsp;</span>
                 </span>
             </div>
             <div class="box">
+                <h3 lang="en">Assessment basis</h3>
+                <h3 lang="de">Lst-BMGL</h3>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="en">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto</span>
                     <span class="out-value" id="o__brutto_ab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="en">SV-DNA</span>
+                    <span class="out-label" data-sign="minus" lang="de">SV-DNA</span>
                     <span class="out-value" id="o__sv_dna">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">Union dues</span>
+                    <span class="out-label" data-sign="minus" lang="en">Union dues</span>
+                    <span class="out-label" data-sign="minus" lang="de">Gewerkschaftsbeitrag</span>
                     <span class="out-value" id="o__union_dues">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">E-Card</span>
+                    <span class="out-label" data-sign="minus" lang="en">E-Card</span>
+                    <span class="out-label" data-sign="minus" lang="de">E-Card</span>
                     <span class="out-value" id="o__ecard">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">Allowance</span>
+                    <span class="out-label" data-sign="minus" lang="en">Allowance</span>
+                    <span class="out-label" data-sign="minus" lang="de">Freibetrag</span>
                     <span class="out-value" id="o__allowance">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">Commuting allowance</span>
+                    <span class="out-label" data-sign="minus" lang="en">Commuting allowance</span>
+                    <span class="out-label" data-sign="minus" lang="de">Pendlerpauschale</span>
                     <span class="out-value" id="o__commuting_allowance">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Assessment basis</span>
+                    <span class="out-label" data-sign="none" lang="en">Assessment basis</span>
+                    <span class="out-label" data-sign="none" lang="de">Lst-BMGL</span>
                     <span class="out-value" id="o__assessment_basis">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
@@ -240,28 +297,33 @@
                     <span class="out-value" id="o__income_tax_before_avab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">AVAB</span>
+                    <span class="out-label" data-sign="minus" lang="en">AVAB</span>
+                    <span class="out-label" data-sign="minus" lang="de">AVAB</span>
                     <span class="out-value" id="o__avab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Income tax</span>
+                    <span class="out-label" data-sign="none" lang="en">Income tax</span>
+                    <span class="out-label" data-sign="none" lang="de">Lohnsteuer</span>
                     <span class="out-value" id="o__income_tax">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="minus">C€</span>
+                    <span class="out-label" data-sign="minus" lang="en">C€</span>
+                    <span class="out-label" data-sign="minus" lang="de">P€</span>
                     <span class="out-value" id="o__commuter_euro">0.000,-&nbsp;</span>
                 </span>
                 <span class="row divider"></span>
                 <span class="row">
-                    <span class="out-label" data-sign="none">Income tax (after C€)</span>
+                    <span class="out-label" data-sign="none" lang="en">Income tax (after C€)</span>
+                    <span class="out-label" data-sign="none" lang="de">Lohnsteuer (nach P€)</span>
                     <span class="out-value" id="o__income_tax_after_commuter_euro">0.000,-&nbsp;</span>
                 </span>
             </div>
         </div>
         <footer id="footer">
             <span>(c) Copyright 2020 Patrick Goldinger & Andreas Schlager & Philipp Trummler</span>
-            <a href="https://github.com/patrickgold/nettocalc">Visit GitHub Repo</a>
+            <a href="https://github.com/patrickgold/nettocalc" lang="en">Visit GitHub Repo</a>
+            <a href="https://github.com/patrickgold/nettocalc" lang="de">GitHub Repo Besuchen</a>
         </footer>
     </div>
 </body>
