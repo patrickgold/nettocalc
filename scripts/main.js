@@ -2,6 +2,7 @@ function byID(id){
     return document.getElementById(id)
 }
 
+
 window.onload = function() {
    var uiIn = {
        // Input from UI
@@ -59,7 +60,11 @@ window.onload = function() {
        avab: byID("o__avab"),
        incomeTax: byID("o__income_tax"),
        commuterEuro: byID("o__commuter_euro"),
+<<<<<<< HEAD
        IncomeAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
+=======
+       IncomeTaxAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
+>>>>>>> origin/backend
 
        // Overtime Output
        OcOvertimeHourlyLoan: byID("o__oc_overtime_hourly_loan"),
@@ -81,6 +86,34 @@ window.onload = function() {
        OcSvDna2: byID("o__oc_sv_dna_2"),
        OcIncomeTax: byID("o__oc_income_tax"),
        OcNetto: byID("o__oc_netto"),
+<<<<<<< HEAD
+=======
+
+       /**
+        * Sets the value of the html element with the given id the given value with a format specified by the given type
+        * @param {String} id The id of the html element
+        * @param {Number} value the value wich should be printed
+        * @param {String} type Wich format type should be applied to the value
+        */
+        print: function (id,value,type){
+            var formatter = new Intl.NumberFormat('de-DE', {
+                style: 'currency',
+                currency: 'EUR',
+            });
+            var printString;
+            if(type == "number"){
+                //printString = value.toString().replace(/^(?!0\.00)\d{1,3}(,\d{3})*(\.\d\d)?$/);
+                printString = formatter.format(value).slice(0,-2); //slice cuts off " €" at the end
+                if(printString.slice(-2) == "00"){
+                    printString = printString.slice(0,-2) + "-\x00\xa0"; //If there is no cent amount its printing ",- " instead of ",00"
+                }
+            }
+            else if(type == "percent"){
+                printString = value + "%";
+            }
+            this[id].innerHTML = printString;  
+        }
+>>>>>>> origin/backend
    }
 
    var comutingAlowanceTable = {
@@ -109,8 +142,14 @@ window.onload = function() {
            [83349.33, 55, 5218.80, 5259.97, 5274.55, 5292.88, 5311.22, 5329.55]
        ],
    }
+<<<<<<< HEAD
    var overtime = new Overtime(uiIn,uiOut);
    var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
 
 
+=======
+   
+   var overtime = new Overtime(uiIn,uiOut);
+   var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
+>>>>>>> origin/backend
 }
