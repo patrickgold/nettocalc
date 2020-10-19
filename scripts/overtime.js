@@ -13,39 +13,6 @@ class Overtime{
     }*/
 
     clcOvertime() {
-<<<<<<< HEAD
-        var brutto = this.input.brutto.value
-        this.input.hours.value
-        this.input.overtimeHours.value
-        this.input.overtimeDevider.value
-        
-        var OvertimeHourlyLoan = brutto / this.input.overtimeDevider.value
-        this.output.overtimeHourlyLoan.value = OvertimeHourlyLoan
-        var OcHoursValue = this.input.hours.value * OvertimeHourlyLoan
-        this.output.overtimeBaseLoan.value = HoursValue
-        var OcAddition = OvertimeHourlyLoan * 0.5
-        if(this.overtimeHours.value > 40) {
-            OtRest = this.overtimeHours.value - 40
-            if(OcRest > 10) {
-                var OtOthersR = OcRest - 10
-                var Ot10h =  10 * OcAddition
-                var OtR = OtOthersR * OcAddition
-                this.output.OvertimeOther.innerHTML = OtR
-                this.output.Overtime10h.value = Ot10H
-            }
-            if(OcRest < 10) {
-                var Ot10h =  OcRest * OcAddition
-                var OtR = 0 
-                this.output.OvertimeOther.innerHTML = OtR
-                this.output.Overtime10h.value = Ot10H
-            }
-            this.output.overtimeTotal.innerHTML = OcHoursValue + Ot10h + OtR
-        }
-        else {
-            this.output.Overtime10h.innerHTML =  0
-            this.output.OvertimeOther.innerHTML = 0
-            this.output.overtimeTotal.innerHTML = 0
-=======
         if(this.input.bruttoTypeHourly.checked == true){
             var Ot10H = 0
             var OtOthers = 0
@@ -86,7 +53,6 @@ class Overtime{
             this.output.OvertimeOther.innerHTML = 0
             this.output.overtimeTotal.innerHTML = 0
             */
->>>>>>> origin/backend
         }
     }
 

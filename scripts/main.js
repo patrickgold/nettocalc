@@ -60,11 +60,7 @@ window.onload = function() {
        avab: byID("o__avab"),
        incomeTax: byID("o__income_tax"),
        commuterEuro: byID("o__commuter_euro"),
-<<<<<<< HEAD
-       IncomeAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
-=======
        IncomeTaxAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
->>>>>>> origin/backend
 
        // Overtime Output
        OcOvertimeHourlyLoan: byID("o__oc_overtime_hourly_loan"),
@@ -86,8 +82,6 @@ window.onload = function() {
        OcSvDna2: byID("o__oc_sv_dna_2"),
        OcIncomeTax: byID("o__oc_income_tax"),
        OcNetto: byID("o__oc_netto"),
-<<<<<<< HEAD
-=======
 
        /**
         * Sets the value of the html element with the given id the given value with a format specified by the given type
@@ -113,7 +107,6 @@ window.onload = function() {
             }
             this[id].innerHTML = printString;  
         }
->>>>>>> origin/backend
    }
 
    var comutingAlowanceTable = {
@@ -142,14 +135,7 @@ window.onload = function() {
            [83349.33, 55, 5218.80, 5259.97, 5274.55, 5292.88, 5311.22, 5329.55]
        ],
    }
-<<<<<<< HEAD
-   var overtime = new Overtime(uiIn,uiOut);
-   var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
-
-
-=======
    
    var overtime = new Overtime(uiIn,uiOut);
    var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
->>>>>>> origin/backend
 }
