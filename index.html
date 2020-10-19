@@ -13,7 +13,160 @@
 
 <body>
     <div id="body">
-        <!-- Content -->
+        <header id="header">
+            <h1>nettocalc</h1>
+        </header>
+        <div class="column" id="input">
+            <h2>Input</h2>
+            <div class="box">
+                <h3>Brutto wage</h3>
+                <span class="row">
+                    <input type="radio" name="i__brutto_type" id="i__brutto_type_hourly" checked>
+                    <label for="i__brutto_type_hourly">Hourly</label>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Hourly rate:</label>
+                        <input type="number" id="i__hourly_rate" placeholder="(0)">
+                    </span>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Hours worked:</label>
+                        <input type="number" id="i__hours" placeholder="(0)">
+                    </span>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Overtime hours:</label>
+                        <input type="number" id="i__overtime_hours" placeholder="(0)">
+                    </span>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Overtime divider: (1/n)</label>
+                        <input type="number" id="i__overtime_divider" placeholder="(158)">
+                    </span>
+                </span>
+                <span class="row">
+                    <input type="radio" name="i__brutto_type" id="i__brutto_type_given">
+                    <label for="i__brutto_type_given">Given</label>
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <label>Brutto:</label>
+                        <input type="number" id="i__brutto" placeholder="(0)">
+                    </span>
+                </span>
+            </div>
+            <div class="box">
+                <h3>Base services</h3>
+                <span class="row">
+                    <input type="checkbox" id="i__has_union">
+                    <label for="i__has_union">Union rate:</label>
+                    <input type="number" id="i__union_rate" placeholder="(1% of brutto)" data-unit="%">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_ecard">
+                    <label for="i__has_ecard">E-Card:</label>
+                    <input type="number" id="i__ecard" placeholder="(12.30)" data-unit="€">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_allowance">
+                    <label for="i__has_allowance">Allowance:</label>
+                    <input type="number" id="i__allowance" placeholder="(0.00)" data-unit="€">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_commuter">
+                    <label for="i__has_commuter">Commuter:</label>
+                    <input type="number" id="i_commuterkm" placeholder="(0)">
+                    <span class="row">
+                        <input type="checkbox" class="checkbox_placeholder">
+                        <input type="radio" name="i__has_commuter" id="i__has_commutersmall" checked>
+                        <label for="i__has_commutersmall">Small</label>
+                        <input type="radio" name="i__has_commuter" id="i__has_commuterlarge">
+                        <label for="i__has_commuterlarge">Large</label>
+                    </span>
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_children">
+                    <label for="i__has_children">Children:</label>
+                    <input type="number" id="i_children" placeholder="(0)">
+                </span>
+            </div>
+            <div class="box">
+                <h3>Additional benefits</h3>
+                <span class="row">
+                    <input type="checkbox" id="i__has_vacation_pay">
+                    <label for="i__has_vacation_pay">Vacation pay:</label>
+                    <input type="number" id="i__vacationpay" placeholder="(brutto)">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_christmas_bonus">
+                    <label for="i__has_christmas_bonus">Christmas bonus:</label>
+                    <input type="number" id="i__christmas_bonus" placeholder="(brutto)">
+                </span>
+            </div>
+            <button id="calculate_btn">Calculate</button>
+        </div>
+        <div class="column" id="output">
+            <h2>Output</h2>
+            <div class="box">
+                PLACEHOLDER FOR BRUTTO CALC
+            </div>
+            <div class="box">
+                <span class="row">
+                    <span class="out-label" data-sign="none">Brutto</span>
+                    <span class="out-value" id="o__brutto_ab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">SV-DNA</span>
+                    <span class="out-value" id="o__sv_dna">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">Union dues</span>
+                    <span class="out-value" id="o__union_dues">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">E-Card</span>
+                    <span class="out-value" id="o__ecard">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">Allowance</span>
+                    <span class="out-value" id="o__allowance">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">Commuting allowance</span>
+                    <span class="out-value" id="o__commuting_allowance">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Assessment basis</span>
+                    <span class="out-value" id="o__assessment_basis">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" id="o__income_tax_rate" data-sign="none">0%</span>
+                    <span class="out-value" id="o__income_tax_before_avab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">AVAB</span>
+                    <span class="out-value" id="o__avab">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Income tax</span>
+                    <span class="out-value" id="o__income_tax">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="minus">C€</span>
+                    <span class="out-value" id="o__commuter_euro">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none">Income tax (after C€)</span>
+                    <span class="out-value" id="o__income_tax_after_commuter_euro">0.000,-&nbsp;</span>
+                </span>
+            </div>
+        </div>
+        <footer id="footer">
+            <span>(c) Copyright 2020 Patrick Goldinger & Andreas Schlager & Philipp Trummler</span>
+            <a href="https://github.com/patrickgold/nettocalc">Visit GitHub Repo</a>
+        </footer>
     </div>
 </body>
 
