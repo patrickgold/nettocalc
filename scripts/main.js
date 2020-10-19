@@ -111,12 +111,14 @@ window.onload = function() {
 
    var comutingAlowanceTable = {
        small: [
-           [20, 58],  // over 20km to 40km
+           [0,    0],
+           [20,  58], // over 20km to 40km
            [40, 113], // over 40km to 60km
            [60, 168]  // over 60km
         ],
         big: [
-            [2, 31],   // over 2km to 20km
+            [0,    0],
+            [2,   31], // over 2km to 20km
             [20, 123], // over 20km to 40km
             [40, 214], // over 40km to 50km
             [60, 306]  // over 60
@@ -126,7 +128,8 @@ window.onload = function() {
    var incomeTaxTable = {
        tax: [
            // 1-5 Children
-           //Income,  %,   AVAB,         1,       2,       3,       4,       5 
+           //Income,  %,   AVAB,         1,       2,       3,       4,       5
+           [       0,  0,       0,       0,       0,       0,       0,       0],
            [ 1066.00, 25,  266.50,  307.67,  322.25,  340.58,  358.92,  377.25],
            [ 1516.00, 35,  418.00,  459.27,  473.85,  492.18,  510.52,  528.85],
            [ 2599.34, 42,  600.05,  641.22,  655.80,  674.14,  692.48,  710.81],

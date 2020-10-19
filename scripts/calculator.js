@@ -32,7 +32,7 @@ class Calculation{
         var incomeTax = this.clcMTR(assesmentBasis);
         var commuterEuro = this.input.commuterKm.value / 6; // 2*commuterKm.value/12
         this.output.print("commuterEuro",commuterEuro,"number")
-        var incomeTaxACE = incomeTax - commuterEuro; //ACE...after commuter euro
+        var incomeTaxACE = incomeTax - commuterEuro > 0 ? incomeTax - commuterEuro : 0; //ACE...after commuter euro
         this.output.print("IncomeTaxAfterCommuterEuro",incomeTaxACE,"number")
         return incomeTaxACE;
     }
@@ -61,7 +61,7 @@ class Calculation{
         //50,"big" sended -> return -money for big PP
         if (this.input.hasCommuterLarge.checked == true) {
             var bi= -1;
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 5; i++) {
                 if (this.CAT.big[i][0] <= this.input.commuterKm.value) {
                    bi++;
                 }
@@ -70,7 +70,7 @@ class Calculation{
         }
         if (this.input.hasCommuterSmall.checked == true) {
             var si= -1;
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 4; i++) {
                 if (this.CAT.small[i][0] <= this.input.commuterKm.value) {
                     si++;
                  }
@@ -84,7 +84,7 @@ class Calculation{
      */ 
     clcMTR(AB) {
         var i = -1;
-        for (var j = 0; j < 6; j++) {
+        for (var j = 0; j < 7; j++) {
             if(this.ITT.tax[j][0] <= AB){
                 i++
             }
