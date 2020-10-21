@@ -37,7 +37,6 @@ window.onload = function() {
        hours: byID("i__hours"),
        hourlyRate: byID("i__hourly_rate"),
        overtimeHours: byID("i__overtime_hours"),
-       overtimeDevider: byID("i__overtime_devider"),
        bruttoTypeHourly: byID("i__brutto_type_hourly"),
        hasOvertime: byID("i__has_overtime"),
        overtimeDivider: byID("i__overtime_divider"),

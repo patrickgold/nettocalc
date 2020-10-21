@@ -12,19 +12,35 @@ class Calculation{
             tmp.addEventListener("click",that.templELclcButton);
         }
     }
-    clcNetIncome(){
-        this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
-        if(this.input.bruttoTypeGiven.checked == true){
-           this.output.print("bruttoAB",this.input.brutto.value,"number")
-            var socialInjurance = this.clcSocialInjurance();
-           this.output.print("svDna",socialInjurance,"number")
-            var incomeTax = this.clcIncomeTax(socialInjurance);
-            var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.ecard.value - this.output.unionDues.value;
+    checkInputs(){
+        var inputs = Object.getOwnPropertyNames(this.input);
+        for(var i = 0; i < inputs.length; i++){
+            if(this.input[inputs[i]].type == "number"){
+                if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value >= 0){
+                    return false
+                }
+            }
         }
-        else if(this.input.bruttoTypeHourly.checked == true){
-            this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
-            this.output.print("bruttoAB",this.input.brutto.value,"number")
+        return true
+    }
+    clcNetIncome(){
+        if(this.checkInputs()){
+            this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
+            if(this.input.bruttoTypeGiven.checked == true){
+               this.output.print("bruttoAB",this.input.brutto.value,"number")
+                var socialInjurance = this.clcSocialInjurance();
+               this.output.print("svDna",socialInjurance,"number")
+                var incomeTax = this.clcIncomeTax(socialInjurance);
+                var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.ecard.value - this.output.unionDues.value;
+            }
+            else if(this.input.bruttoTypeHourly.checked == true){
+                this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
+                this.output.print("bruttoAB",this.input.brutto.value,"number")
 
+            }
+        }
+        else{
+            console.log("There was an Problem with the Inputs");
         }
     }
     clcIncomeTax(socialInjurance){
