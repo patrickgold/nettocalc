@@ -17,8 +17,8 @@
 </head>
 
 <body class="no-user-select">
-    <input type="radio" name="lang" id="lang-en">
-    <input type="radio" name="lang" id="lang-de" checked>
+    <input type="radio" class="hidden" name="lang" id="lang-en">
+    <input type="radio" class="hidden" name="lang" id="lang-de" checked>
     <div id="body">
         <header id="header">
             <h1>nettocalc</h1>
@@ -34,8 +34,12 @@
             <h2 lang="en">Input</h2>
             <h2 lang="de">Eingabe</h2>
             <div class="box">
-                <h3 lang="en">Brutto wage</h3>
-                <h3 lang="de">Bruttogehalt</h3>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-brutto-wage" checked>
+                <span class="row header">
+                    <h3 lang="en">Brutto wage</h3>
+                    <h3 lang="de">Bruttogehalt</h3>
+                    <label for="box-brutto-wage" class="box-collapse-f"></label>
+                </span>
                 <span class="row">
                     <input type="radio" name="i__brutto_type" id="i__brutto_type_hourly" checked>
                     <label for="i__brutto_type_hourly" lang="en">Hourly</label>
@@ -90,8 +94,12 @@
                 </span>
             </div>
             <div class="box">
-                <h3 lang="en">Base services</h3>
-                <h3 lang="de">Grunddienste</h3>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-base-services" checked>
+                <span class="row header">
+                    <h3 lang="en">Base services</h3>
+                    <h3 lang="de">Grunddienste</h3>
+                    <label for="box-base-services" class="box-collapse-f"></label>
+                </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_union">
                     <label for="i__has_union" lang="en">Union rate:</label>
@@ -133,8 +141,12 @@
                 </span>
             </div>
             <div class="box">
-                <h3 lang="en">Additional benefits</h3>
-                <h3 lang="de">Zuschüsse</h3>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-additional-benefits" checked>
+                <span class="row header">
+                    <h3 lang="en">Additional benefits</h3>
+                    <h3 lang="de">Zuschüsse</h3>
+                    <label for="box-additional-benefits" class="box-collapse-f"></label>
+                </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_vacation_pay">
                     <label for="i__has_vacation_pay" lang="en">Vacation pay:</label>
@@ -153,8 +165,12 @@
             <h2 lang="en">Output</h2>
             <h2 lang="de">Ausgabe</h2>
             <div class="box">
-                <h3 lang="en">Overtime loan</h3>
-                <h3 lang="de">Überstundenlohn</h3>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-overtime-loan" checked>
+                <span class="row header">
+                    <h3 lang="en">Overtime loan</h3>
+                    <h3 lang="de">Überstundenlohn</h3>
+                    <label for="box-overtime-loan" class="box-collapse-f"></label>
+                </span>
                 <span class="row">
                     <span class="out-label" data-sign="none" lang="en">Overtime hourly loan</span>
                     <span class="out-label" data-sign="none" lang="de">Überstunden Stundenlohn</span>
@@ -257,8 +273,12 @@
                 </span>
             </div>
             <div class="box">
-                <h3 lang="en">Assessment basis</h3>
-                <h3 lang="de">Lst-BMGL</h3>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-assessment-basis" checked>
+                <span class="row header">
+                    <h3 lang="en">Assessment basis</h3>
+                    <h3 lang="de">Lst-BMGL</h3>
+                    <label for="box-assessment-basis" class="box-collapse-f"></label>
+                </span>
                 <span class="row">
                     <span class="out-label" data-sign="none" lang="en">Brutto</span>
                     <span class="out-label" data-sign="none" lang="de">Brutto</span>

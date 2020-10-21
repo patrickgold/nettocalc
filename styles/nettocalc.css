@@ -93,15 +93,44 @@ body {
 .box + .box {
     margin-top: 16px;
 }
-.box h3 {
-    margin: 4px 4px 16px 4px;
-}
 .box .row {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     margin: 8px 0;
     width: 100%;
+}
+.box .row.header {
+    box-sizing: border-box;
+    margin: 4px 0 16px 0;
+    justify-content: space-between;
+}
+.box .row.header h3 {
+    margin: 0 0 0 4px;
+}
+.box .box-collapse-b ~ .row.header .box-collapse-f:before {
+    background-color: transparent;
+    border-radius: 4px;
+    content: "?";
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0;
+    padding: 4px 8px;
+}
+.box .box-collapse-b ~ .row.header .box-collapse-f:before {
+    content: "+";
+}
+.box .box-collapse-b:checked ~ .row.header .box-collapse-f:before {
+    content: "-";
+}
+.box .box-collapse-b ~ .row.header .box-collapse-f:hover:before {
+    background-color: rgba(255,255,255,0.3);
+}
+.box .box-collapse-b:not(:checked) ~ .row:not(.header) {
+    display: none;
+}
+.box .box-collapse-b:not(:checked) ~ .row.header {
+    margin-bottom: 4px;
 }
 .box .row > .row {
     margin: 8px 0 0 0;
@@ -159,6 +188,6 @@ body {
     margin: 16px 0;
 }
 
-[name="lang"] {display: none; }
+.hidden {display: none; }
 #lang-de:checked ~ #body [lang]:not([lang="de"]) { display: none; }
 #lang-en:checked ~ #body [lang]:not([lang="en"]) { display: none; }
