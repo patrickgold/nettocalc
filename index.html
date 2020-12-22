@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222">
-    <meta name="author" content="Patrick Goldinger, Andreas Schlager">
+    <meta name="author" content="Patrick Goldinger, Andreas Schlager, Philipp Trummler">
     <meta name="description" content="">
     <title>nettocalc for WIR</title>
     <link rel="stylesheet" href="styles/nettocalc.css" type="text/css">
@@ -19,7 +19,9 @@
 <body class="no-user-select">
     <input type="radio" class="hidden" name="lang" id="lang-en">
     <input type="radio" class="hidden" name="lang" id="lang-de" checked>
+
     <div id="body">
+        <!-- Header UI -->
         <header id="header">
             <h1>nettocalc</h1>
             <span class="header-right">
@@ -30,15 +32,17 @@
                 </span>
             </span>
         </header>
+
+        <!-- Input UI -->
         <div class="column" id="input">
             <h2 lang="en">Input</h2>
             <h2 lang="de">Eingabe</h2>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-brutto-wage" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-in-brutto-wage" checked>
                 <span class="row header">
                     <h3 lang="en">Brutto wage</h3>
                     <h3 lang="de">Bruttogehalt</h3>
-                    <label for="box-brutto-wage" class="box-collapse-f"></label>
+                    <label for="box-in-brutto-wage" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
                     <input type="radio" name="i__brutto_type" id="i__brutto_type_hourly" checked>
@@ -94,11 +98,11 @@
                 </span>
             </div>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-base-services" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-in-base-services" checked>
                 <span class="row header">
                     <h3 lang="en">Base services</h3>
                     <h3 lang="de">Grunddienste</h3>
-                    <label for="box-base-services" class="box-collapse-f"></label>
+                    <label for="box-in-base-services" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_union">
@@ -141,11 +145,11 @@
                 </span>
             </div>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-additional-benefits" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-in-special-payments" checked>
                 <span class="row header">
-                    <h3 lang="en">Additional benefits</h3>
-                    <h3 lang="de">Zuschüsse</h3>
-                    <label for="box-additional-benefits" class="box-collapse-f"></label>
+                    <h3 lang="en">Special payments</h3>
+                    <h3 lang="de">Sonderzahlungen</h3>
+                    <label for="box-in-special-payments" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
                     <input type="checkbox" id="i__has_vacation_pay">
@@ -160,16 +164,44 @@
                     <input type="number" id="i__christmas_bonus" placeholder="(brutto)">
                 </span>
             </div>
+            <div class="box">
+                <input type="checkbox" class="box-collapse-b hidden" id="box-in-benefits" checked>
+                <span class="row header">
+                    <h3 lang="en">Benefits</h3>
+                    <h3 lang="de">Zulagen</h3>
+                    <label for="box-in-benefits" class="box-collapse-f"></label>
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_severity_allowance">
+                    <label for="i__has_severity_allowance" lang="en">Severity allowance:</label>
+                    <label for="i__has_severity_allowance" lang="de">Schmutzzulage:</label>
+                    <input type="number" id="i__severity_allowance" placeholder="(0)">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_hardship_allowance">
+                    <label for="i__has_hardship_allowance" lang="en">Hardship allowance:</label>
+                    <label for="i__has_hardship_allowance" lang="de">Erschwerniszulage:</label>
+                    <input type="number" id="i__hardship_allowance" placeholder="(0)">
+                </span>
+                <span class="row">
+                    <input type="checkbox" id="i__has_hazard_pay">
+                    <label for="i__has_hazard_pay" lang="en">Hazard pay:</label>
+                    <label for="i__has_hazard_pay" lang="de">Gefahrenzulage:</label>
+                    <input type="number" id="i__hazard_pay" placeholder="(0)">
+                </span>
+            </div>
         </div>
+
+        <!-- Output UI -->
         <div class="column user-select" id="output">
             <h2 lang="en">Output</h2>
             <h2 lang="de">Ausgabe</h2>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-overtime-loan" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-out-overtime-loan" checked>
                 <span class="row header">
                     <h3 lang="en">Overtime loan</h3>
                     <h3 lang="de">Überstundenlohn</h3>
-                    <label for="box-overtime-loan" class="box-collapse-f"></label>
+                    <label for="box-out-overtime-loan" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
                     <span class="out-label" data-sign="none" lang="en">Overtime hourly loan</span>
@@ -273,15 +305,42 @@
                 </span>
             </div>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-assessment-basis" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-out-assessment-basis" checked>
                 <span class="row header">
                     <h3 lang="en">Assessment basis</h3>
                     <h3 lang="de">Lst-BMGL</h3>
-                    <label for="box-assessment-basis" class="box-collapse-f"></label>
+                    <label for="box-out-assessment-basis" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
-                    <span class="out-label" data-sign="none" lang="en">Brutto</span>
-                    <span class="out-label" data-sign="none" lang="de">Brutto</span>
+                    <span class="out-label" data-sign="none" lang="en">Brutto (without benefits)</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto (ohne Zulagen)</span>
+                    <span class="out-value" id="o__be_brutto_without_benefits">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="plus" lang="en">Severity allowance</span>
+                    <span class="out-label" data-sign="plus" lang="de">Schmutzzulage</span>
+                    <span class="out-value" id="o__be_severity_allowance">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="plus" lang="en">Hardship allowance</span>
+                    <span class="out-label" data-sign="plus" lang="de">Erwerniszulage</span>
+                    <span class="out-value" id="o__be_hardship_allowance">0.000,-&nbsp;</span>
+                </span>
+                <span class="row">
+                    <span class="out-label" data-sign="plus" lang="en">Hazard pay</span>
+                    <span class="out-label" data-sign="plus" lang="de">Gefahrenzulage</span>
+                    <span class="out-value" id="o__be_hazard_pay">0.000,-&nbsp;</span>
+                </span>
+                <span class="row divider"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none" lang="en">Brutto (with benefits)</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto (mit Zulagen)</span>
+                    <span class="out-value" id="o__be_brutto_with_benefits_1">0.000,-&nbsp;</span>
+                </span>
+                <span class="row space"></span>
+                <span class="row">
+                    <span class="out-label" data-sign="none" lang="en">Brutto (Tax-relevant)</span>
+                    <span class="out-label" data-sign="none" lang="de">Brutto (Lst-pflichtig)</span>
                     <span class="out-value" id="o__brutto_ab">0.000,-&nbsp;</span>
                 </span>
                 <span class="row">
@@ -343,11 +402,11 @@
                 </span>
             </div>
             <div class="box">
-                <input type="checkbox" class="box-collapse-b hidden" id="box-netto-calculation" checked>
+                <input type="checkbox" class="box-collapse-b hidden" id="box-out-netto-calculation" checked>
                 <span class="row header">
                     <h3 lang="en">Netto loan calculation</h3>
                     <h3 lang="de">Nettolohn-Berechnung</h3>
-                    <label for="box-netto-calculation" class="box-collapse-f"></label>
+                    <label for="box-out-netto-calculation" class="box-collapse-f"></label>
                 </span>
                 <span class="row">
                     <span class="out-label" data-sign="none" lang="en">Brutto</span>
@@ -492,6 +551,8 @@
                 </span>
             </div>
         </div>
+
+        <!-- Footer UI -->
         <footer id="footer">
             <span>(c) Copyright 2020 Patrick Goldinger & Andreas Schlager & Philipp Trummler</span>
             <a href="https://github.com/patrickgold/nettocalc" lang="en">Visit GitHub Repo</a>
