@@ -113,6 +113,12 @@ window.onload = function() {
                 printString = value + "%";
             }
             this[id].innerHTML = printString;  
+        },
+        /**
+         * Sets all Outputs to 0
+         */
+        resetOutput: function(){
+            
         }
    }
 

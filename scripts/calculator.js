@@ -26,22 +26,18 @@ class Calculation{
     clcNetIncome(){
         if(this.checkInputs()){
             this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
-            if(this.input.bruttoTypeGiven.checked == true){
-                this.output.print("bruttoAB",this.input.brutto.value,"number")
-                this.output.print("NcBruttoAB",this.input.brutto.value,"number")
-                var socialInjurance = this.clcSocialInjurance();
-                this.output.print("svDna",socialInjurance,"number")
-                this.output.print("NcSvDna",socialInjurance,"number")
-                var incomeTax = this.clcIncomeTax(socialInjurance);
-                this.output.print("NcIncomeTax",incomeTax,"number");
-                var netto = this.input.brutto.value - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
-                this.output.print("NcNetto",netto,"number");
-            }
-            else if(this.input.bruttoTypeHourly.checked == true){
+            if(this.input.bruttoTypeHourly.checked == true){
                 this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
-                this.output.print("bruttoAB",this.input.brutto.value,"number")
-
             }
+            this.output.print("bruttoAB",this.input.brutto.value,"number")
+            this.output.print("NcBruttoAB",this.input.brutto.value,"number")
+            var socialInjurance = this.clcSocialInjurance();
+            this.output.print("svDna",socialInjurance,"number")
+            this.output.print("NcSvDna",socialInjurance,"number")
+            var incomeTax = this.clcIncomeTax(socialInjurance);
+            this.output.print("NcIncomeTax",incomeTax,"number");
+            var netto = this.input.brutto.value - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
+            this.output.print("NcNetto",netto,"number");
         }
         else{
             console.log("There was an Problem with the Inputs");
