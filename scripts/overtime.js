@@ -13,6 +13,7 @@ class Overtime{
     }*/
 
     clcOvertime() {
+        /*
         this.output.print("OcOvertimeHourlyLoan", 0, "number")
         this.output.print("OcOvertimeBaseLoan", 0, "number")
         this.output.print("OcOvertimeAddition", 0, "number")
@@ -24,18 +25,19 @@ class Overtime{
         this.output.print("OcOvertimeLoan", 0, "number")
         this.output.print("OcSvDna", 0, "number")
         this.output.print("OcIncomeTax10h", 0, "number")
-        this.output.print("OcAssassmentBasis", 0, "number")
+        // --------
+        this.output.print("OcAssassmentBasis", 0, "number") // LST-BMGL
         this.output.print("OcIncomeTaxRate", 0, "percent")
         this.output.print("OcIncomeTaxBeforeAvab", 0, "number")
         this.output.print("OcAvab", 0, "number")
         this.output.print("OcIncomeTaxAfterAvab", 0, "number")
+        // --------
         this.output.print("BruttoAb2", 0, "number")
         this.output.print("OcOvertimeLoan2", 0, "number")
         this.output.print("OcSvDna2", 0, "number")
         this.output.print("OcIncomeTax", 0, "number")
         this.output.print("OcNetto", 0, "number")
-
-
+        */
 
         if(this.input.bruttoTypeHourly.checked == true){
             var overtime40 = 0
@@ -79,6 +81,17 @@ class Overtime{
                     overtimeTotal = overtime40 + Ot10h + Otothers
                     this.output.print("OcOvertimeTotal", overtimeTotal, "number")
                     
+                    // Bruttos
+                    var brutto = this.input.hourlyRate.value * this.input.hours.value
+                    this.output.print("OcBruttoAB", brutto, "number")
+                    this.output.print("OcOvertimeLoan", overtimeTotal, "number")
+                    var svdna_brutto = overtimeTotal * 0.1812
+                    this.output.print("OcSvDna", svdna_brutto, "number")
+                    this.output.print("OcIncomeTax10h", Ot10h, "number")
+                    var lst_bmgl_brutto = brutto + overtimeTotal - svdna_brutto - Ot10h
+                    this.output.print("OcAssassmentBasis", lst_bmgl_brutto, "number")
+
+                    // Lohnsteuer
                 }
             }
             else{
@@ -93,6 +106,7 @@ class Overtime{
                 this.output.print("OcSvDna", 0, "number")
                 this.output.print("OcIncomeTax10h", 0, "number")
                 this.output.print("OcAssassmentBasis", 0, "number")
+
                 this.output.print("OcIncomeTaxRate", 0, "percent")
                 this.output.print("OcIncomeTaxBeforeAvab", 0, "number")
                 this.output.print("OcAvab", 0, "number")
@@ -105,7 +119,7 @@ class Overtime{
             }
         }
         if(this.input.bruttoTypeGiven.checked == true) {
-
+            
         }
     }
 
