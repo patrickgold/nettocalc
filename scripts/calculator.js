@@ -14,7 +14,6 @@ class Calculation{
     }
     checkInputs(){
         var inputs = Object.getOwnPropertyNames(this.input);
-        console.log(inputs)
         for(var i = 0; i < inputs.length; i++){
             if(this.input[inputs[i]].type == "number"){
                 if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value < 0){
@@ -28,11 +27,15 @@ class Calculation{
         if(this.checkInputs()){
             this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
             if(this.input.bruttoTypeGiven.checked == true){
-               this.output.print("bruttoAB",this.input.brutto.value,"number")
+                this.output.print("bruttoAB",this.input.brutto.value,"number")
+                this.output.print("NcBruttoAB",this.input.brutto.value,"number")
                 var socialInjurance = this.clcSocialInjurance();
-               this.output.print("svDna",socialInjurance,"number")
+                this.output.print("svDna",socialInjurance,"number")
+                this.output.print("NcSvDna",socialInjurance,"number")
                 var incomeTax = this.clcIncomeTax(socialInjurance);
-                var netto = this.input.brutto.value - socialInjurance - incomeTax - this.output.ecard.value - this.output.unionDues.value;
+                this.output.print("NcIncomeTax",incomeTax,"number");
+                var netto = this.input.brutto.value - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
+                this.output.print("NcNetto",netto,"number");
             }
             else if(this.input.bruttoTypeHourly.checked == true){
                 this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
@@ -57,8 +60,10 @@ class Calculation{
         var unionRate = this.input.unionRate.value != "" ? this.input.unionRate.value * 0.01 : 0.01;
         var unionDues = this.input.hasUnion.checked == true ? ((this.input.brutto.value * unionRate >= 33.80) ? 33.80 : (this.input.brutto.value * unionRate)) : 0; //Maximum dues is 33.80€
         this.output.print("unionDues",unionDues,"number")
+        this.output.print("NcUnionDues",unionDues,"number")
         var eCard = this.input.hasEcard.checked == true ? (this.input.ecard.value != "" ? this.input.ecard.value : 12.30) : 0; //12.30€
         this.output.print("ecard",eCard,"number")
+        this.output.print("NcEcard",eCard,"number")
         var allowanceAmount = this.input.hasAllowance.checked == true ? this.input.allowance.value : 0;
         this.output.print("allowance",allowanceAmount,"number")
         var commutingAllowance = this.input.hasCommuter.checked == true ? this.clcComutingAllowance() : 0;

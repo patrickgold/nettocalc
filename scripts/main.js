@@ -61,6 +61,13 @@ window.onload = function() {
        commuterEuro: byID("o__commuter_euro"),
        IncomeTaxAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
 
+       NcBruttoAB: byID("o__nc_brutto"),
+       NcSvDna: byID("o__nc_sv_dna"),
+       NcUnionDues: byID("o__nc_union_dues"),
+       NcEcard: byID("o__nc_ecard"),
+       NcIncomeTax: byID("o__nc_income_tax"),
+       NcNetto: byID("o__nc_netto"),
+
        // Overtime Output
        OcOvertimeHourlyLoan: byID("o__oc_overtime_hourly_loan"),
        OcOvertimeAddition: byID("o__oc_overtime_addition"),
