@@ -16,8 +16,11 @@ class Calculation{
         var inputs = Object.getOwnPropertyNames(this.input);
         for(var i = 0; i < inputs.length; i++){
             if(this.input[inputs[i]].type == "number"){
-                if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value < 0){
+                if(this.input[inputs[i]].validity.badInput){
                     return false
+                }
+                else if(parseFloat(this.input[inputs[i]].value) < 0){
+                    return false;
                 }
             }
         }
@@ -25,9 +28,10 @@ class Calculation{
     }
     clcNetIncome(){
         if(this.checkInputs()){
-            this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
+            this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output,this.ITT) : 0;
+             
             if(this.input.bruttoTypeHourly.checked == true){
-                this.input.brutto.value = this.input.hourlyRate.value * this.input.hours.value;
+                this.input.brutto.value = 4 * this.input.hourlyRate.value * this.input.hours.value;
             }
             this.output.print("bruttoAB",this.input.brutto.value,"number")
             this.output.print("NcBruttoAB",this.input.brutto.value,"number")
