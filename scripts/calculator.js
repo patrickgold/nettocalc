@@ -14,7 +14,6 @@ class Calculation{
     }
     checkInputs(){
         var inputs = Object.getOwnPropertyNames(this.input);
-        console.log(inputs)
         for(var i = 0; i < inputs.length; i++){
             if(this.input[inputs[i]].type == "number"){
                 if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value < 0){
@@ -26,7 +25,7 @@ class Calculation{
     }
     clcNetIncome(){
         if(this.checkInputs()){
-            this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output) : 0;
+            this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output,this.ITT) : 0;
             if(this.input.bruttoTypeGiven.checked == true){
                this.output.print("bruttoAB",this.input.brutto.value,"number")
                 var socialInjurance = this.clcSocialInjurance();
