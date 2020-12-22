@@ -81,6 +81,7 @@ window.onload = function() {
        OcSvDna2: byID("o__oc_sv_dna_2"),
        OcIncomeTax: byID("o__oc_income_tax"),
        OcNetto: byID("o__oc_netto"),
+       OcOvertimeBaseLoan: this.byID("o__oc_overtime_base_loan"),
 
        /**
         * Sets the value of the html element with the given id the given value with a format specified by the given type

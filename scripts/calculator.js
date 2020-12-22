@@ -14,9 +14,10 @@ class Calculation{
     }
     checkInputs(){
         var inputs = Object.getOwnPropertyNames(this.input);
+        console.log(inputs)
         for(var i = 0; i < inputs.length; i++){
             if(this.input[inputs[i]].type == "number"){
-                if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value >= 0){
+                if(this.input[inputs[i]].validity.valid == false || this.input[inputs[i]].value < 0){
                     return false
                 }
             }
