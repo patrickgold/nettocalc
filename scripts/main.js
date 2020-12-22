@@ -119,7 +119,11 @@ window.onload = function() {
          */
         resetOutput: function(){
             
+        },
+        closeNotNeededOutputs: function(){
+            
         }
+        
    }
 
    var comutingAlowanceTable = {

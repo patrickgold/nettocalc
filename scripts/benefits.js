@@ -1,5 +1,5 @@
 
-class Bonus{
+class Benefits{
     constructor(){
         
     }
