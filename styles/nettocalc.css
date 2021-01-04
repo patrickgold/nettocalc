@@ -1,8 +1,15 @@
+:root {
+    --body-bg-color: #000b1c;
+    --box-bg-color: #002e75;
+    --input-bg-color: #000b1c;
+    --fg-color: #e5e5e5;
+}
+
 html, body { height: 100%; }
 
 body {
-    background-color: #000b1c;
-    color: #e5e5e5;
+    background-color: var(--body-bg-color);
+    color: var(--fg-color);
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     width: 100%;
@@ -34,6 +41,7 @@ body {
 
 #header {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -85,7 +93,7 @@ body {
 }
 
 .box {
-    background-color: #002e75;
+    background-color: var(--box-bg-color);
     border-radius: 4px;
     box-shadow: 0 0 8px #333;
     box-sizing: border-box;
@@ -144,8 +152,8 @@ body {
     display: none;
 }
 .box .row .checkbox {
-    background-color: #000b1c;
-    border: 2px solid #e5e5e5;
+    background-color: var(--input-bg-color);
+    border: 2px solid var(--fg-color);
     border-radius: 4px;
     box-sizing: border-box;
     height: 16px;
@@ -155,7 +163,7 @@ body {
 }
 .box .row input[type="checkbox"]:checked + .checkbox::before,
 .box .row input[type="checkbox"]:checked + .checkbox::after {
-    background-color: #e5e5e5;
+    background-color: var(--fg-color);
     border-radius: 2px;
     content: "";
     height: 2px;
@@ -177,8 +185,8 @@ body {
     display: none;
 }
 .box .row .radio {
-    background-color: #000b1c;
-    border: 2px solid #e5e5e5;
+    background-color: var(--input-bg-color);
+    border: 2px solid var(--fg-color);
     border-radius: 100%;
     box-sizing: border-box;
     height: 16px;
@@ -187,7 +195,7 @@ body {
     width: 16px;
 }
 .box .row input[type="radio"]:checked + .radio::after {
-    background-color: #e5e5e5;
+    background-color: var(--fg-color);
     border-radius: 100%;
     content: "";
     height: 8px;
@@ -202,15 +210,15 @@ body {
     width: 40%;
 }
 .box input {
-    background-color: #000b1c;
+    background-color: var(--input-bg-color);
     border: none;
     border-radius: 4px;
     box-shadow: none;
-    color: #e5e5e5;
+    color: var(--fg-color);
     padding: 8px;
 }
 .box .row.divider {
-    border-top: 1px dotted #e5e5e5;
+    border-top: 1px dotted var(--fg-color);
     margin: 0;
 }
 .box .row.space {
@@ -243,3 +251,39 @@ body {
 
 #lang-de:checked ~ #body [lang]:not([lang="de"]) { display: none; }
 #lang-en:checked ~ #body [lang]:not([lang="en"]) { display: none; }
+
+@media only screen and (max-width: 1100px) {
+    body {
+        position: relative;
+    }
+
+    #body {
+        gap: 0px;
+        grid-template-areas:
+            "header header"
+            "input input"
+            "output output"
+            "footer footer";
+        margin-top: 64px;
+        width: 95%;
+        max-width: 95%;
+    }
+
+    #header {
+        background-color: var(--body-bg-color);
+        left: 0;
+        padding: 0 2.5%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    #header h1 {
+        font-size: 1.6em;
+    }
+
+    #input, #output {
+        margin: 16px 0;
+    }
+}
