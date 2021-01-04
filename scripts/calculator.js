@@ -81,7 +81,15 @@ class Calculation{
             this.output.print("NcNetto",netto,"number");
         }
         else{
-            console.log("There was an Problem with the Inputs");
+            if(this.input.EN.checked == true){
+                alert("There was an Problem with the Inputs");
+            }
+            else if(this.input.DE.checked == true){
+                alert("Es gab einen Fehler bei der Eingabe");
+            }
+            else{
+                console.log("Hackerboy2000");
+            }
         }
     }
     clcIncomeTax(socialInjurance){

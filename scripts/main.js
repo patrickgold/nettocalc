@@ -57,6 +57,10 @@ window.onload = function() {
        ColBaseSev: byID("box-in-base-services"),
        ColSpecPay: byID("box-in-special-payments"),
        ColBenefits: byID("box-in-benefits"),
+
+       //Language Button
+       DE: byID("lang-de"),
+       EN: byID("lang-en"),
        
    }
    
