@@ -82,7 +82,7 @@ class Calculation{
         }
         else{
             if(this.input.EN.checked == true){
-                alert("There was an Problem with the Inputs");
+                alert("There was a problem with the inputs");
             }
             else if(this.input.DE.checked == true){
                 alert("Es gab einen Fehler bei der Eingabe");
