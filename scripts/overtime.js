@@ -6,39 +6,8 @@ class Overtime {
         this.ITT = ITT;
         this.clcOvertime();
     }
-    /*example(){
-        //this.input.brutto.value
-        //this.input.hasECard.checked
-        //variable = bedingung ? code wenn bedingung stimmt : code wenn bedingung nicht stimmt
-        //variable = otRest(ff) < 10 ? ss(2) : ss(3)
-    }*/
 
     clcOvertime() {
-        /*
-        this.output.print("OcOvertimeHourlyLoan", 0, "number")
-        this.output.print("OcOvertimeBaseLoan", 0, "number")
-        this.output.print("OcOvertimeAddition", 0, "number")
-        this.output.print("OcOvertimeFirst10", 0, "number")
-        this.output.print("OcOvertimeOther", 0, "number")
-        this.output.print("OcOvertimeTotal", 0, "number")
-
-        this.output.print("OcBruttoAB", 0, "number")
-        this.output.print("OcOvertimeLoan", 0, "number")
-        this.output.print("OcSvDna", 0, "number")
-        this.output.print("OcIncomeTax10h", 0, "number")
-        // --------
-        this.output.print("OcAssassmentBasis", 0, "number") // LST-BMGL
-        this.output.print("OcIncomeTaxRate", 0, "percent")
-        this.output.print("OcIncomeTaxBeforeAvab", 0, "number")
-        this.output.print("OcAvab", 0, "number")
-        this.output.print("OcIncomeTaxAfterAvab", 0, "number")
-        // --------
-        this.output.print("BruttoAb2", 0, "number")
-        this.output.print("OcOvertimeLoan2", 0, "number")
-        this.output.print("OcSvDna2", 0, "number")
-        this.output.print("OcIncomeTax", 0, "number")
-        this.output.print("OcNetto", 0, "number")
-        */
         var overtime40 = 0
         var addition = 0
         var tmp = 0
@@ -232,38 +201,4 @@ class Overtime {
         var return_obj = { rate: rate, sea: sea }
         return return_obj
     }
-
-    /*
-    * print -> this.output.print("<idName>", <variable>, "<number; percent>")
-    */
-
-    /*
-    * ÜGL
-    * GHL
-    * ÜZ(%)
-    * 
-    * +GHL (BaseLoane)
-    * +10 Üz
-    * +Rest
-    * _________________
-    * ÜG
-    * 
-    * Brutto
-    * +Ü
-    * -SV-DNA
-    * -10 Lst für ÜZ
-    * ______________
-    * LST-BMGL
-    *  %
-    * - Abzug
-    * ______________
-    * LST
-    * 
-    * Brutto
-    * +Ü
-    * -SV-DNA
-    * -LST
-    * _______________
-    * Netto
-    */
 }
