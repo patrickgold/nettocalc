@@ -51,6 +51,13 @@ window.onload = function() {
 
        // Calcutae Button
        calculateBtn: byID("calculate_btn"),
+
+       //Colapse Inputs
+       ColBruttoWage: byID("box-in-brutto-wage"),
+       ColBaseSev: byID("box-in-base-services"),
+       ColSpecPay: byID("box-in-special-payments"),
+       ColBenefits: byID("box-in-benefits"),
+       
    }
    
    var uiOut = {
@@ -106,7 +113,15 @@ window.onload = function() {
        OcSvDna2: byID("o__oc_sv_dna_2"),
        OcIncomeTax: byID("o__oc_income_tax"),
        OcNetto: byID("o__oc_netto"),
-       OcOvertimeBaseLoan: this.byID("o__oc_overtime_base_loan"),
+       OcOvertimeBaseLoan: byID("o__oc_overtime_base_loan"),
+
+       //Colapse Outputs
+       ColOvertime: byID("box-out-overtime-loan"),
+       ColAB: byID("box-out-assessment-basis"),
+       ColNetCalc: byID("box-out-netto-calculation"),
+       ColVacPay: byID("box-out-vacation-pay"),
+       ColChrisBonus: byID("box-out-christmas-bonus"),
+       //true->Auf
 
        //b
 
@@ -134,15 +149,7 @@ window.onload = function() {
             }
             this[id].innerHTML = printString;  
         },
-        /**
-         * Sets all Outputs to 0
-         */
-        resetOutput: function(){
-            
-        },
-        closeNotNeededOutputs: function(){
 
-        }
         
    }
 

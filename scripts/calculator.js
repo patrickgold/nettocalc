@@ -26,8 +26,44 @@ class Calculation{
         }
         return true
     }
+    resetOutput(){
+        var outputs = Object.getOwnPropertyNames(this.output);
+        for(var i = 0; i < outputs.length; i++){
+            outputs.value = 0;
+        }
+    }
+    closeNotNeededBoxes(){
+        if(screen.width <= 1100){
+            this.input.ColBruttoWage.checked = false;
+            this.input.ColBaseSev.checked = false;
+            this.input.ColSpecPay.checked = false;
+            this.input.ColBenefits.checked = false;
+            if(this.input.hasOvertime.checked == false){
+                this.output.ColOvertime.checked = false;
+            }
+            if(this.input.hasVacationPay.checked == false){
+                this.output.ColVacPay.checked = false;
+            }
+            if(this.input.hasChristmasBonus.checked == false){
+                this.output.ColChrisBonus.checked = false;
+            }
+        }
+        else{
+            if(this.input.hasOvertime.checked == false){
+                this.output.ColOvertime.checked = false;
+            }
+            if(this.input.hasVacationPay.checked == false){
+                this.output.ColVacPay.checked = false;
+            }
+            if(this.input.hasChristmasBonus.checked == false){
+                this.output.ColChrisBonus.checked = false;
+            }
+        }
+    }
     clcNetIncome(){
         if(this.checkInputs()){
+            this.resetOutput();
+            this.closeNotNeededBoxes();
             this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output,this.ITT) : 0;
     
             if(this.input.bruttoTypeHourly.checked == true){
