@@ -108,7 +108,29 @@ window.onload = function() {
        OcNetto: byID("o__oc_netto"),
        OcOvertimeBaseLoan: this.byID("o__oc_overtime_base_loan"),
 
-       //b
+       //Vacationpay
+       VpBrutto1: byID("o__vp_brutto_1"),
+       VpSvDna1: byID("o__vp_sv_dna_1"),
+       VpAllowance: byID("o__vp_allowance"),
+       VpAssassmentBasis: byID("o__vp_assessment_basis"),
+       VpIncomeTaxRate: byID("o__vp_income_tax_rate"),
+       VpIncomeTax1: byID("o__vp_income_tax_1"),
+       VpBrutto2: byID("o__vp_brutto_2"),
+       VpSVDNA2: byID("o__vp_sv_dna_2"),
+       VpIncomeTax2: byID("o__vp_income_tax_2"),
+       VpNetto: byID("o__vp_netto"),
+
+       //Christmas
+       CbBrutto1: byID("o__cb_brutto_1"),
+       CbSvDna1: byID("o__cb_sv_dna_1"),
+       CbAllowance: byID("o__cb_allowance"),
+       CbAssassmentBasis: byID("o__cb_assessment_basis"),
+       CbIncomeTaxRate: byID("o__cb_income_tax_rate"),
+       CbIncomeTax1: byID("o__cb_income_tax_1"),
+       CbBrutto2: byID("o__cb_brutto_2"),
+       CbSVDNA2: byID("o__cb_sv_dna_2"),
+       CbIncomeTax2: byID("o__cb_income_tax_2"),
+       CbNetto: byID("o__cb_netto"),
 
        /**
         * Sets the value of the html element with the given id the given value with a format specified by the given type
