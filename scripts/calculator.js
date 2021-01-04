@@ -77,7 +77,7 @@ class Calculation{
             var incomeTax = this.clcIncomeTax(socialInjurance);
             this.output.print("NcIncomeTax",incomeTax,"number");
             var netto = this.benefits.bruttoWBenefits - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML.replace(/,/g, '.')) - parseFloat(this.output.unionDues.innerHTML.replace(/,/g, '.'));
-            netto = neto < 0 ? 0 : netto;
+            netto = netto < 0 ? 0 : netto;
             this.output.print("NcNetto",netto,"number");
         }
         else{
