@@ -206,8 +206,15 @@ body {
 }
 .box .row input[type="number"] {
     align-self: flex-end;
+    -moz-appearance: textfield;
     margin: 0 0 0 auto;
     width: 40%;
+}
+.box .row input[type="number"]::-webkit-outer-spin-button,
+.box .row input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 .box input {
     background-color: var(--input-bg-color);
