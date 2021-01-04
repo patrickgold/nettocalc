@@ -1,10 +1,9 @@
 class Calculation{
-    constructor(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime){
+    constructor(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable){
         this.input = uiIn;
         this.output = uiOut;
         this.CAT = comutingAlowanceTable;
         this.ITT = incomeTaxTable;
-        this.OT = overtime;
         var that = this;
         this.templELclcButton = function(){that.clcNetIncome()};
         var tmp = document.getElementById("calculate_btn");
@@ -78,6 +77,7 @@ class Calculation{
             var incomeTax = this.clcIncomeTax(socialInjurance);
             this.output.print("NcIncomeTax",incomeTax,"number");
             var netto = this.benefits.bruttoWBenefits - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML.replace(/,/g, '.')) - parseFloat(this.output.unionDues.innerHTML.replace(/,/g, '.'));
+            netto = neto < 0 ? 0 : netto;
             this.output.print("NcNetto",netto,"number");
         }
         else{
@@ -114,6 +114,7 @@ class Calculation{
         var commutingAllowance = this.input.hasCommuter.checked == true ? this.clcComutingAllowance() : 0;
         this.output.print("commutingAllowance",commutingAllowance,"number")
         var assessmentBasis = this.benefits.bruttoLTWT - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
+        assessmentBasis = assessmentBasis < 0 ? 0 : assessmentBasis;
         this.output.print("assessmentBasis",assessmentBasis,"number")
         return assessmentBasis;
     }
