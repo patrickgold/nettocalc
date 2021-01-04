@@ -29,18 +29,19 @@ class Calculation{
     clcNetIncome(){
         if(this.checkInputs()){
             this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output,this.ITT) : 0;
-             
+    
             if(this.input.bruttoTypeHourly.checked == true){
                 this.input.brutto.value = 4 * this.input.hourlyRate.value * this.input.hours.value;
             }
-            this.output.print("bruttoAB",this.input.brutto.value,"number")
-            this.output.print("NcBruttoAB",this.input.brutto.value,"number")
+            this.output.print("bruttoWoBenefits",this.input.brutto.value,"number")
+            this.benefits = new Benefits(this.input,this.output);
+
             var socialInjurance = this.clcSocialInjurance();
             this.output.print("svDna",socialInjurance,"number")
             this.output.print("NcSvDna",socialInjurance,"number")
             var incomeTax = this.clcIncomeTax(socialInjurance);
             this.output.print("NcIncomeTax",incomeTax,"number");
-            var netto = this.input.brutto.value - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
+            var netto = this.benefits.bruttoWBenefits - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
             this.output.print("NcNetto",netto,"number");
         }
         else{
@@ -58,7 +59,7 @@ class Calculation{
     }
     clcAssesmentBasis(socialInjurance){
         var unionRate = this.input.unionRate.value != "" ? this.input.unionRate.value * 0.01 : 0.01;
-        var unionDues = this.input.hasUnion.checked == true ? ((this.input.brutto.value * unionRate >= 33.80) ? 33.80 : (this.input.brutto.value * unionRate)) : 0; //Maximum dues is 33.80€
+        var unionDues = this.input.hasUnion.checked == true ? ((this.benefits.bruttoWBenefits * unionRate >= 33.80) ? 33.80 : (this.benefits.bruttoWBenefits  * unionRate)) : 0; //Maximum dues is 33.80€
         this.output.print("unionDues",unionDues,"number")
         this.output.print("NcUnionDues",unionDues,"number")
         var eCard = this.input.hasEcard.checked == true ? (this.input.ecard.value != "" ? this.input.ecard.value : 12.30) : 0; //12.30€
@@ -68,13 +69,13 @@ class Calculation{
         this.output.print("allowance",allowanceAmount,"number")
         var commutingAllowance = this.input.hasCommuter.checked == true ? this.clcComutingAllowance() : 0;
         this.output.print("commutingAllowance",commutingAllowance,"number")
-        var assessmentBasis = this.input.brutto.value - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
+        var assessmentBasis = this.benefits.bruttoLTWT - socialInjurance - unionDues - eCard - allowanceAmount - commutingAllowance;
         this.output.print("assessmentBasis",assessmentBasis,"number")
         return assessmentBasis;
     }
     
     clcSocialInjurance(){
-        return this.input.brutto.value > 5370 ? 5370 * 0.1812 : this.input.brutto.value * 0.1812; //18.12% with a maximumof 5370€
+        return this.benefits.bruttoSTSI > 5370 ? 5370 * 0.1812 : this.benefits.bruttoSTSI * 0.1812; //18.12% with a maximumof 5370€
     }
     /**
      * Calculates the comuting allowance

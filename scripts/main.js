@@ -41,12 +41,29 @@ window.onload = function() {
        hasOvertime: byID("i__has_overtime"),
        overtimeDivider: byID("i__overtime_divider"),
 
+       //Benefits Input
+       has_sevAll: byID("i__has_severity_allowance"),
+       has_hardAll: byID("i__has_hardship_allowance"),
+       has_hazPay: byID("i__has_hazard_pay"),
+       sevAll: byID("i__severity_allowance"),
+       hardAll: byID("i__hardship_allowance"),
+       hazPay: byID("i__hazard_pay"),
+
        // Calcutae Button
        calculateBtn: byID("calculate_btn"),
    }
    
    var uiOut = {
        // Outputs for UI
+
+       //Benefits Outputs
+       bruttoWoBenefits: byID("o__be_brutto_without_benefits"),
+       sevAll: byID("o__be_severity_allowance"),
+       hardAll: byID("o__be_hardship_allowance"),
+       hazPay: byID("o__be_hazard_pay"),
+       bruttowBenefits: byID("o__be_brutto_with_benefits_1"),
+
+       //Income Tax Calculation Outputs
        bruttoAB: byID("o__brutto_ab"),
        svDna: byID("o__sv_dna"),
        unionDues: byID("o__union_dues"),
@@ -61,6 +78,7 @@ window.onload = function() {
        commuterEuro: byID("o__commuter_euro"),
        IncomeTaxAfterCommuterEuro: byID("o__income_tax_after_commuter_euro"),
 
+       //Netto Calc Outputs
        NcBruttoAB: byID("o__nc_brutto"),
        NcSvDna: byID("o__nc_sv_dna"),
        NcUnionDues: byID("o__nc_union_dues"),
@@ -89,6 +107,8 @@ window.onload = function() {
        OcIncomeTax: byID("o__oc_income_tax"),
        OcNetto: byID("o__oc_netto"),
        OcOvertimeBaseLoan: this.byID("o__oc_overtime_base_loan"),
+
+       //b
 
        /**
         * Sets the value of the html element with the given id the given value with a format specified by the given type
@@ -121,7 +141,7 @@ window.onload = function() {
             
         },
         closeNotNeededOutputs: function(){
-            
+
         }
         
    }
