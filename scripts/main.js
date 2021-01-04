@@ -209,6 +209,5 @@ window.onload = function() {
        ],
    }
    
-   var overtime = new Overtime(uiIn,uiOut);
    var calc = new Calculation(uiIn,uiOut,comutingAlowanceTable,incomeTaxTable,overtime);
 }

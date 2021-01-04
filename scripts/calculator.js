@@ -77,7 +77,7 @@ class Calculation{
             this.output.print("NcSvDna",socialInjurance,"number")
             var incomeTax = this.clcIncomeTax(socialInjurance);
             this.output.print("NcIncomeTax",incomeTax,"number");
-            var netto = this.benefits.bruttoWBenefits - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML) - parseFloat(this.output.unionDues.innerHTML);
+            var netto = this.benefits.bruttoWBenefits - socialInjurance - incomeTax - parseFloat(this.output.ecard.innerHTML.replace(/,/g, '.')) - parseFloat(this.output.unionDues.innerHTML.replace(/,/g, '.'));
             this.output.print("NcNetto",netto,"number");
         }
         else{
