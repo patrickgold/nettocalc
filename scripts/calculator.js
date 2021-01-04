@@ -64,7 +64,8 @@ class Calculation{
             this.resetOutput();
             this.closeNotNeededBoxes();
             this.overtime = this.input.hasOvertime.checked == true ? new Overtime(this.input,this.output,this.ITT) : 0;
-    
+            var holiday = new Holiday(this.input, this.output);
+
             if(this.input.bruttoTypeHourly.checked == true){
                 this.input.brutto.value = 4 * this.input.hourlyRate.value * this.input.hours.value;
             }
